@@ -38,53 +38,24 @@
 
 
     <!-- User Login Start -->
-    <div class="container-fluid py-5 wow fadeIn" data-wow-delay="0.1s">
-        <div class="container text-center py-5">
-            <div class="row justify-content-center">
-                  <div class="col-lg-6">
-				 
-				
-					<form>
-					  <!-- Email input -->
-					  <div class="form-outline mb-4">
-						<input type="email" id="form2Example1" class="form-control" />
-						<label class="form-label" for="form2Example1">Email address</label>
-					  </div>
-
-					  <!-- Password input -->
-					  <div class="form-outline mb-4">
-						<input type="password" id="form2Example2" class="form-control" />
-						<label class="form-label" for="form2Example2">Password</label>
-					  </div>
-
-					  <!-- 2 column grid layout for inline styling -->
-					  <div class="row mb-4">
-						<div class="col d-flex justify-content-center">
-						  <!-- Checkbox -->
-						  <div class="form-check">
-							<input class="form-check-input" type="checkbox" value="" id="form2Example31" checked />
-							<label class="form-check-label" for="form2Example31"> Remember me </label>
-						  </div>
-						</div>
-
-						<div class="col">
-						  <!-- Simple link -->
-						  <a href="#!">Forgot password?</a>
-						</div>
-					  </div>
-
-					  <!-- Submit button -->
-					  <button type="button" class="btn btn-primary btn-block mb-4">Sign in</button>
-
-					  <!-- Register buttons -->
-					  <div class="text-center">
-						<p>Not a member? <a href="signup.php">Register</a></p>
-						 
-					  </div>
-				</form>
-				 </div>
+     <div class="container mt-5 mb-5">
+        <h2>User Login</h2>
+        <form action="db-userlogin.php" method="post">
+            <div class="mb-3">
+                <label for="email" class="form-label">Email address</label>
+                <input type="email" class="form-control" id="email" name="email" required>
             </div>
-        </div>
+            <div class="mb-3">
+                <label for="password" class="form-label">Password</label>
+                <input type="password" class="form-control" id="password" name="password" required>
+            </div>
+            <div class="mb-3 form-check">
+                <input type="checkbox" class="form-check-input" id="rememberMe" name="rememberMe">
+                <label class="form-check-label" for="rememberMe">Remember me</label>
+            </div>
+            <button type="submit" class="btn btn-primary">Login</button>
+            <a href="forgot-password.php" class="btn btn-link">Forgot Password?</a>
+        </form>
     </div>
     <!-- Login End -->
         
