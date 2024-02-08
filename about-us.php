@@ -17,32 +17,36 @@
 
 <head>
     <meta charset="utf-8">
-    <title>Home | Smart Home Devices</title>
+    <title>About US | Smart Home Devices</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
-    <meta content="Smart Home Devices, Home Devices" name="keywords">
+    <meta content="Smart Home Devices About US, Home Devices" name="keywords">
     <meta content="Buy Smart Home Devices" name="description">
 
  <?php include_once('header.php'); ?>
 
+ 
 
-    <!-- Home banner Start -->
-    <div class="container-fluid pt-5 bg-primary hero-header mb-5">
+    <!-- Hero Start -->
+    <div class="container-fluid pt-5 bg-primary hero-header">
         <div class="container pt-5">
             <div class="row g-5 pt-5">
                 <div class="col-lg-6 align-self-center text-center text-lg-start mb-lg-5">
-                    <div class="btn btn-sm border rounded-pill text-white px-3 mb-3 animated slideInRight">Smart Home Devices</div>
-                    <h1 class="display-4 text-white mb-4 animated slideInRight">Welcome to the Future of Smart Living!</h1>
-                    <p class="text-white mb-4 animated slideInRight">Transform your home with cutting-edge automation. Explore our range of smart devices designed for comfort, security, and energy efficiency.</p>
-                    <a href="#" class="btn btn-light py-sm-3 px-sm-5 rounded-pill me-3 animated slideInRight">Read More</a>
-                    <a href="#" class="btn btn-outline-light py-sm-3 px-sm-5 rounded-pill animated slideInRight">Contact Us</a>
+                    <h1 class="display-4 text-white mb-4 animated slideInRight">About Us</h1>
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb justify-content-center justify-content-lg-start mb-0">
+                            <li class="breadcrumb-item"><a class="text-white" href="#">Home</a></li>
+                            <li class="breadcrumb-item"><a class="text-white" href="#">Pages</a></li>
+                            <li class="breadcrumb-item text-white active" aria-current="page">About Us</li>
+                        </ol>
+                    </nav>
                 </div>
                 <div class="col-lg-6 align-self-end text-center text-lg-end">
-                    <img class="img-fluid" src="img/home-banner.png" alt="">
+                    <img class="img-fluid" src="img/hero-img.png" alt="" style="max-height: 300px;">
                 </div>
             </div>
         </div>
     </div>
-    <!-- Home banner End -->
+    <!-- Hero End -->
 
 
     <!-- About us Section Start -->

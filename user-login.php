@@ -1,3 +1,10 @@
+<?php
+session_start();
+if(isset($_SESSION['user_id'])) {
+    header("Location: index.php");
+    exit;
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -54,7 +61,7 @@
                 <label class="form-check-label" for="rememberMe">Remember me</label>
             </div>
             <button type="submit" class="btn btn-primary">Login</button>
-            <a href="forgot-password.php" class="btn btn-link">Forgot Password?</a>
+            <!-- <a href="forgot-password.php" class="btn btn-link">Forgot Password?</a> -->
         </form>
     </div>
     <!-- Login End -->

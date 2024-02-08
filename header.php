@@ -27,19 +27,32 @@
   
 <section id="topbar" class="topbar d-flex align-items-center">
     <div class="container d-flex justify-content-center justify-content-md-between">
-      <div class="contact-info d-flex align-items-center">
-        <i class="bi bi-envelope d-flex align-items-center"><a href="mailto:info@smarthome.com">info@smarthome.com</a></i>
-        <i class="bi bi-phone d-flex align-items-center ms-4"><span>+14374999577</span></i>
+      <div class="social-links d-none d-md-flex align-items-center">
+      <a href="#" class="twitter"> <i class="bi bi-twitter"></i></a> 
+        <a href="#" class="facebook"> <i class="bi bi-facebook"></i></a>
+        <a href="#" class="instagram"> <i class="bi bi-instagram"></i></a>
+        <a href="#" class="linkedin"> <i class="bi bi-linkedin"></i></a>
       </div>
       <div class="social-links d-none d-md-flex align-items-center">
+
+      <?php
+ if(!isset($_SESSION['user_id']))
+ { ?>
+	  <a href="#"><span><i class="fa fa-user"></i> Admin</span></a>
+	  <a href="user-login.php"><span><i class="fa fa-users"></i> User</span></a>
+
+    <?php   }
+if(isset($_SESSION['user_id']))
+{ ?>
+
+
+<a href="#"><span><i class="fa fa-users"></i> Welcome, <?php echo $user_name; ?></span></a>
+
 	  
-	  <a href="#"><span><i class="fa fa-user"></i>Admin</span></a>
-	  <a href="user-login"><span><i class="fa fa-users"></i>User</span></a>
+    <div class="logout-btn"> <a href="logout.php"><span><i class="fas fa-sign-out-alt"></i> Logout </span></a>  </div>
+    <?php   }?>
 	  
-        <a href="#" class="twitter"><i class="bi bi-twitter"></i></a>
-        <a href="#" class="facebook"><i class="bi bi-facebook"></i></a>
-        <a href="#" class="instagram"><i class="bi bi-instagram"></i></a>
-        <a href="#" class="linkedin"><i class="bi bi-linkedin"></i></a>
+        
       </div>
     </div>
   </section>
@@ -50,7 +63,7 @@
     <div class="container-fluid sticky-top">
         <div class="container">
             <nav class="navbar navbar-expand-lg navbar-dark p-0">
-                <a href="index.html" class="navbar-brand">
+                <a href="index.php" class="navbar-brand">
                     <h1 class="text-white">Smart Home</h1>
                 </a>
                 <button type="button" class="navbar-toggler ms-auto me-0" data-bs-toggle="collapse"
@@ -60,7 +73,7 @@
                 <div class="collapse navbar-collapse" id="navbarCollapse">
                     <div class="navbar-nav ms-auto">
                         <a href="index.php" class="nav-item nav-link active">Home</a>
-                        <a href="#" class="nav-item nav-link">About Us</a>
+                        <a href="about-us.php" class="nav-item nav-link">About Us</a>
                         <a href="#" class="nav-item nav-link">Our Blogs</a>
                         <a href="#" class="nav-item nav-link">Products</a>
                      
