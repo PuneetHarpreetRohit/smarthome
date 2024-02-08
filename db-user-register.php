@@ -19,9 +19,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $sql = "INSERT INTO users (first_name, last_name, email, phone_number, password, address, state, city) VALUES ('$firstName', '$lastName', '$email', '$phoneNumber', '$password', '$address', '$state', '$city')";
 
     if ($conn->query($sql) === TRUE) {
-        echo "Registration successful!";
+        echo"<script>window.location='user-login.php'</script>";
     } else {
         echo "Error: " . $sql . "<br>" . $conn->error;
+        echo"<script> alert('Sorry Try Again Register Your Self...!!');</script>"; 
+        echo"<script>window.location='signup.php'</script>";
     }
 
     $conn->close();
