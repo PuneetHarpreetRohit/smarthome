@@ -1,7 +1,8 @@
-
+/*** Products ***/
 
 
 /*** Topbar ***/
+
 
 .topbar {
   background: #14183e;
@@ -73,6 +74,8 @@ h6,
 }
 
 
+
+
 /*** Button ***/
 .btn {
     font-weight: 500;
@@ -141,7 +144,7 @@ h6,
 @media (max-width: 991.98px) {
     .navbar .navbar-nav {
         padding: 0 15px;
-        background: var(--primary);
+        background: #14183e;
     }
 
     .navbar .navbar-nav .nav-link  {
@@ -240,6 +243,8 @@ h6,
  
 
 /*** Footer ***/
+
+
  
 .footer .btn.btn-social {
     margin-right: 5px;
@@ -309,4 +314,19 @@ h6,
     margin-right: 0;
     padding-right: 0;
     border-right: none;
+}
+
+:root {
+    --primary: #1363C6;
+    --secondary: #15ACE1;
+    --light: #F4F7FE;
+    --dark: #14183E;
+}
+
+.back-to-top {
+    position: fixed;
+    display: none;
+    right: 45px;
+    bottom: 45px;
+    z-index: 99;
 }

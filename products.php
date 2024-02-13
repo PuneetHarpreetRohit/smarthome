@@ -53,20 +53,20 @@
    
     <div class="container mt-5">
     <h2 class="mb-4">Products</h2>
-    <div class="row row-cols-1 row-cols-md-3 g-4">
+    <div class="row row-cols-1 row-cols-md-4 g-4">
         <div class="col">
-            <div class="card h-100">
+            <div class="card pro-img h-100">
                 <img src="img/product-image.jpg" class="card-img-top" alt="Product Image">
                 <div class="card-body">
                     <h5 class="card-title">Smart Thermostat Pro</h5>
-                    <p class="card-text">$100.00</p>
+                    <p class="card-text">$199.99</p>
                     <button class="btn btn-primary">Add to Cart</button>
                     <a href="detail.php" class="btn btn-outline-secondary">View Details</a>
                 </div>
             </div>
         </div>
         <div class="col">
-            <div class="card h-100">
+            <div class="card pro-img h-100">
                 <img src="img/product-image2.jpg" class="card-img-top" alt="Product Image">
                 <div class="card-body">
                     <h5 class="card-title">HomeGuard Security System</h5>
@@ -77,7 +77,7 @@
             </div>
         </div>
         <div class="col">
-            <div class="card h-100">
+            <div class="card pro-img h-100">
                 <img src="img/product-image3.jpg" class="card-img-top" alt="Product Image">
                 <div class="card-body">
                     <h5 class="card-title">IntelliLight Smart Bulb</h5>
@@ -87,6 +87,8 @@
                 </div>
             </div>
         </div>
+
+        
         <!-- Add more product cards here -->
     </div>
 </div>
