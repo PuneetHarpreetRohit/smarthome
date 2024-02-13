@@ -75,7 +75,7 @@ if(isset($_SESSION['user_id']))
                         <a href="index.php" class="nav-item nav-link active">Home</a>
                         <a href="about-us.php" class="nav-item nav-link">About Us</a>
                         <a href="#" class="nav-item nav-link">Our Blogs</a>
-                        <a href="#" class="nav-item nav-link">Products</a>
+                        <a href="products.php" class="nav-item nav-link">Products</a>
                      
                         <a href="#" class="nav-item nav-link">Contact Us</a>
 						
