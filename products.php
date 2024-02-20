@@ -1,16 +1,8 @@
 <?php
-    session_start();
-    if(isset($_SESSION['user_id'])) {
-        // User is logged in
-        $user_id = $_SESSION['user_id'];
-        // Retrieve user's name from the database based on user_id
-        include 'functions.php';
-        $user_name = getUserName($user_id); 
-        // Show the user name on the top bar
-        echo "<script>document.getElementById('user_name').innerText = '$user_name';</script>";
-        // Show the logout button on the top bar
-        echo "<script>document.getElementById('logout_button').style.display = 'block';</script>";
-    }
+session_start();
+
+ include 'dbcon.php'; // Include the database connection file
+
     ?>
     <!DOCTYPE html>
 <html lang="en">
@@ -50,44 +42,42 @@
 
 
     <!-- products Section Start -->
+
+
    
     <div class="container mt-5">
     <h2 class="mb-4">Products</h2>
     <div class="row row-cols-1 row-cols-md-4 g-4">
-        <div class="col">
-            <div class="card pro-img h-100">
-                <img src="img/product-image.jpg" class="card-img-top" alt="Product Image">
-                <div class="card-body">
-                    <h5 class="card-title">Smart Thermostat Pro</h5>
-                    <p class="card-text">$199.99</p>
-                    <button class="btn btn-primary">Add to Cart</button>
-                    <a href="detail.php" class="btn btn-outline-secondary">View Details</a>
-                </div>
-            </div>
-        </div>
-        <div class="col">
-            <div class="card pro-img h-100">
-                <img src="img/product-image2.jpg" class="card-img-top" alt="Product Image">
-                <div class="card-body">
-                    <h5 class="card-title">HomeGuard Security System</h5>
-                    <p class="card-text">$200.00</p>
-                    <button class="btn btn-primary">Add to Cart</button>
-                    <a href="#" class="btn btn-outline-secondary">View Details</a>
-                </div>
-            </div>
-        </div>
-        <div class="col">
-            <div class="card pro-img h-100">
-                <img src="img/product-image3.jpg" class="card-img-top" alt="Product Image">
-                <div class="card-body">
-                    <h5 class="card-title">IntelliLight Smart Bulb</h5>
-                    <p class="card-text">$40.00</p>
-                    <button class="btn btn-primary">Add to Cart</button>
-                    <a href="#" class="btn btn-outline-secondary">View Details</a>
-                </div>
-            </div>
-        </div>
 
+
+    <?php
+                	
+$sql = "SELECT * FROM products";
+$result = $conn->query($sql);
+
+while($row = mysqli_fetch_assoc($result)){
+$title= $row['title'];
+$id = $row['product_id'];
+$pic= $row['image'];
+$price= $row['price'];
+$image = "img/".$pic;
+?>
+
+        <div class="col">
+            <div class="card pro-img h-100">
+                <img src="<?php echo $image;?>" class="card-img-top" alt="<?php echo $title; ?>" ">
+                <div class="card-body">
+                    <h5 class="card-title"><?php echo $title; ?></h5>
+                    <p class="card-text">Price: $<?php echo $price; ?></p>
+                    <button class="btn btn-primary">Add to Cart</button>
+                    <a href="product-detail?id=<?php echo $id;  ?>" class="btn btn-outline-secondary">View Details</a>
+                </div>
+            </div>
+        </div>
+       
+               
+        <?php }   $conn->close(); ?>
+ 
         
         <!-- Add more product cards here -->
     </div>
