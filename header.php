@@ -36,14 +36,35 @@
       <div class="social-links d-none d-md-flex align-items-center">
 
       <?php
+
+
+
+
  if(!isset($_SESSION['user_id']))
- { ?>
+ {
+
+    
+    ?>
 	  <a href="#"><span><i class="fa fa-user"></i> Admin</span></a>
 	  <a href="user-login.php"><span><i class="fa fa-users"></i> User</span></a>
 
     <?php   }
 if(isset($_SESSION['user_id']))
-{ ?>
+{ 
+       // User is logged in
+       $user_id = $_SESSION['user_id'];
+       // Retrieve user's name from the database based on user_id
+       include 'functions.php';
+       $user_name = getUserName($user_id); 
+       // Show the user name on the top bar
+       echo "<script>document.getElementById('user_name').innerText = '$user_name';</script>";
+       // Show the logout button on the top bar
+       echo "<script>document.getElementById('logout_button').style.display = 'block';</script>";
+       
+       
+    
+    
+    ?>
 
 
 <a href="#"><span><i class="fa fa-users"></i> Welcome, <?php echo $user_name; ?></span></a>

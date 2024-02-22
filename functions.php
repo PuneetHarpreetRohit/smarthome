@@ -23,8 +23,12 @@ function getUserName($user_id) {
 
     // Close database connection
     $stmt->close();
-    $conn->close();
+     
 
     return $user_name;
 }
+
+ 
+
+
 ?>

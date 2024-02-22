@@ -1,16 +1,6 @@
 <?php
     session_start();
-    if(isset($_SESSION['user_id'])) {
-        // User is logged in
-        $user_id = $_SESSION['user_id'];
-        // Retrieve user's name from the database based on user_id
-        include 'functions.php';
-        $user_name = getUserName($user_id); 
-        // Show the user name on the top bar
-        echo "<script>document.getElementById('user_name').innerText = '$user_name';</script>";
-        // Show the logout button on the top bar
-        echo "<script>document.getElementById('logout_button').style.display = 'block';</script>";
-    }
+
     ?>
     <!DOCTYPE html>
 <html lang="en">
