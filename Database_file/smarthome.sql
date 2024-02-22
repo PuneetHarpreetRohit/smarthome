@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Feb 20, 2024 at 07:03 PM
+-- Generation Time: Feb 22, 2024 at 06:12 PM
 -- Server version: 8.0.31
 -- PHP Version: 8.0.26
 
@@ -20,6 +20,32 @@ SET time_zone = "+00:00";
 --
 -- Database: `smarthome`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `cart`
+--
+
+DROP TABLE IF EXISTS `cart`;
+CREATE TABLE IF NOT EXISTS `cart` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `product_id` varchar(100) COLLATE utf8mb4_general_ci NOT NULL,
+  `user_id` varchar(100) COLLATE utf8mb4_general_ci NOT NULL,
+  `quantity` int NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `cart`
+--
+
+INSERT INTO `cart` (`id`, `product_id`, `user_id`, `quantity`) VALUES
+(1, '1', '2', 1),
+(2, '2', '2', 1),
+(3, '3', '2', 1),
+(4, '4', '2', 1),
+(5, '6', '2', 1);
 
 -- --------------------------------------------------------
 
