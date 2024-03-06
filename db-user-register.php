@@ -11,12 +11,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $email = $_POST["email"];
     $phoneNumber = $_POST["phoneNumber"];
     $password = password_hash($_POST["password"], PASSWORD_DEFAULT);
-    $address = $_POST["address"];
-    $state = $_POST["state"];
-    $city = $_POST["city"];
 
     // SQL query to insert data
-    $sql = "INSERT INTO users (first_name, last_name, email, phone_number, password, address, state, city) VALUES ('$firstName', '$lastName', '$email', '$phoneNumber', '$password', '$address', '$state', '$city')";
+    $sql = "INSERT INTO users (first_name, last_name, email, phone_number, password) VALUES ('$firstName', '$lastName', '$email', '$phoneNumber', '$password')";
 
     if ($conn->query($sql) === TRUE) {
         echo"<script>window.location='user-login.php'</script>";

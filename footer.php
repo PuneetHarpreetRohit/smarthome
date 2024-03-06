@@ -3,7 +3,7 @@
         <div class="container py-5">
             <div class="row g-5">
                 <div class="col-md-6 col-lg-3 wow fadeIn" data-wow-delay="0.1s">
-                    <a href="index.html" class="d-inline-block mb-3">
+                    <a href="index.php" class="d-inline-block mb-3">
                         <h1 class="text-white">Smart Home </h1>
                     </a>
                     <p class="mb-0">Elevate living with advanced automation. Explore smart solutions for lighting, security, and more. Redefine your home experience.</p>
@@ -19,11 +19,11 @@
                 </div>
                 <div class="col-md-6 col-lg-3 wow fadeIn" data-wow-delay="0.7s">
                     <h5 class="text-white mb-4">Our Products</h5>
-                    <a class="btn btn-link" href="">Automation Home Kit</a>
-                    <a class="btn btn-link" href="">Auto Fan</a>
-                    <a class="btn btn-link" href="">Auto Night Light</a>
-                    <a class="btn btn-link" href="">Remote Room</a>
-                    <a class="btn btn-link" href="">Wireless Swiches</a>
+                    <a href="products.php" class="btn btn-link">All Products</a>
+                        <a href="office-desk.php" class="btn btn-link">Office Desk</a>
+                        <a href="home-automation.php" class="btn btn-link">Home Automation</a>
+                        <a href="alarm-system.php" class="btn btn-link">Alarm System</a>
+                        <a href="automation-device.php" class="btn btn-link">Automation Device</a>
                 </div>
 				
 				     <div class="col-md-6 col-lg-3 wow fadeIn" data-wow-delay="0.3s">

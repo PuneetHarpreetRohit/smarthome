@@ -1,6 +1,203 @@
+/*** Thanks Page ***/
+.resize-thanks {
+    width: 100px;
+        height: 100px;
+        object-fit: cover; /* Ensure the image covers the entire space */
+}
+
+/*** Thanks Page end ***/
+
+.checkout-section .prod-title{
+
+    font-size: 18px;
+}
+
 /*** Products ***/
 
 
+.custom-sidebar-wrapper {
+    background-color: #f8f9fa;
+    border-radius: 10px;
+    padding: 20px;
+}
+
+.custom-search-widget h3,
+.custom-category-widget h3 {
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.custom-search-widget input[type="search"] {
+    border-radius: 5px;
+}
+
+.custom-category-widget ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+.custom-category-widget ul li {
+    margin-bottom: 10px;
+}
+
+.custom-category-widget ul li a {
+    color: #333;
+    text-decoration: none;
+}
+
+.custom-category-widget ul li a:hover {
+    color: #007bff;
+}
+
+
+.product-card {
+    height: 100%;
+}
+
+.product-title {
+    font-size: 1rem; /* Adjust the font size as needed */
+    margin-bottom: 0.5rem; /* Add some space below the title */
+}
+
+.product-price {
+    font-size: 0.9rem; /* Adjust the font size as needed */
+    margin-bottom: 1rem; /* Add some space below the price */
+}
+
+ 
+
+
+
+
+/* Custom CSS for Cart Section */
+
+
+
+
+.cart-section {
+    padding: 50px 0;
+}
+
+.section-title {
+    font-size: 32px;
+    font-weight: bold;
+    margin-bottom: 30px;
+}
+
+.cart-table {
+    width: 100%;
+}
+
+.cart-table th,
+.cart-table td {
+    vertical-align: middle;
+}
+
+.product-image {
+    width: 80px;
+    height: auto;
+    margin-right: 15px;
+}
+
+.product-title {
+    font-weight: bold;
+}
+
+.price,
+.quantity,
+.total,
+.action {
+    text-align: center;
+}
+
+.quantity-input {
+    width: 60px;
+    text-align: center;
+}
+
+.btn-update,
+.btn-remove {
+    margin-right: 5px;
+}
+
+.cart-summary {
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    padding: 20px;
+}
+
+.summary-title {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.summary-item {
+    margin-bottom: 10px;
+}
+
+.summary-item .item-label {
+    font-weight: bold;
+    margin-right: 10px;
+}
+
+.total .item-value {
+    font-size: 20px;
+    color: #333;
+}
+
+.btn-checkout {
+    display: block;
+    margin-top: 20px;
+}
+
+
+.product-card {
+    display: flex;
+    flex-direction: column;
+    height: 100%; /* Ensure cards take up full height of parent */
+}
+
+.product-card .card-img-top {
+    height: 200px; /* Default height for the images */
+    object-fit: cover; /* Ensure the images cover the entire space */
+}
+
+/* Media queries for responsive design */
+@media (max-width: 576px) { /* Extra small devices (phones) */
+    .product-card .card-img-top {
+        height: 150px; /* Adjust height for extra small devices */
+    }
+
+    .row-cols-md-4 .col {
+        flex: 0 0 50%; /* Set columns to take up 50% width */
+        max-width: 50%; /* Set maximum width of columns */
+    }
+}
+
+@media (min-width: 577px) and (max-width: 768px) { /* Small devices (tablets) */
+    .product-card .card-img-top {
+        height: 180px; /* Adjust height for small devices */
+    }
+}
+
+.product-card .card-img-top {
+    height: 200px; /* Set a fixed height for the product images */
+    object-fit: cover; /* Ensure the images cover the entire space */
+}
+
+/* Custom CSS for product cards */
+.product-card {
+    display: flex;
+    flex-direction: column;
+    height: 100%; /* Ensure cards take up full height of parent */
+}
+
+.product-card .card-body {
+    flex-grow: 1;
+}
+
+/*** End Products CSS  ***/
 /*** Topbar ***/
 
 

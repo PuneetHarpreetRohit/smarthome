@@ -88,26 +88,7 @@ if(isset($_SESSION['user_id'])) {
                     </div>
                 </div>
 
-                <div class="col-12">
-                    <div class="form-floating">
-                        <textarea class="form-control" placeholder="Your Address here" id="address" name="address" style="height: 150px" spellcheck="false" required></textarea>
-                        <label for="address">Address</label>
-                    </div>
-                </div>
-
-                <div class="col-6">
-                    <div class="form-floating">
-                        <input type="text" class="form-control" id="state" name="state" placeholder="State" required>
-                        <label for="state">State</label>
-                    </div>
-                </div>
-
-                <div class="col-6">
-                    <div class="form-floating">
-                        <input type="text" class="form-control" id="city" name="city" placeholder="City" required>
-                        <label for="city">City</label>
-                    </div>
-                </div>
+        
 
                 <div class="col-12">
                     <button class="btn btn-primary w-100 py-3" type="submit">Register</button>

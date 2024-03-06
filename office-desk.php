@@ -1,6 +1,7 @@
 <?php
 session_start();
 include_once 'dbcon.php'; // Include the database connection file
+$name   = "Office Desk";
 require 'check_if_added.php';
 if (isset($_GET['pageno'])) {
     $pageno = $_GET['pageno'];
@@ -10,7 +11,7 @@ if (isset($_GET['pageno'])) {
 $no_of_records_per_page = 8;
 $offset = ($pageno-1) * $no_of_records_per_page;
 
-$total_pages_sql = "SELECT COUNT(*) FROM products";
+$total_pages_sql = "SELECT COUNT(*) FROM products WHERE category = '$name'";
 $result = mysqli_query($conn, $total_pages_sql);
 $total_rows = mysqli_fetch_array($result)[0];
 $total_pages = ceil($total_rows / $no_of_records_per_page);
@@ -21,10 +22,10 @@ $total_pages = ceil($total_rows / $no_of_records_per_page);
 
 <head>
     <meta charset="utf-8">
-    <title>Our Products | Smart Home Devices</title>
+    <title><?php echo $name; ?> Products | Smart Home Devices</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
-    <meta content="Smart Home Devices Our Products, Home Devices" name="keywords">
-    <meta content="Buy Smart Home Devices" name="description">
+    <meta content="Smart Home Devices <?php echo $name; ?> Products, <?php echo $name; ?>" name="keywords">
+    <meta content="<?php echo $name; ?> Buy Smart Home Devices" name="description">
 
  <?php include_once('header.php'); ?>
 
@@ -35,12 +36,12 @@ $total_pages = ceil($total_rows / $no_of_records_per_page);
         <div class="container pt-5">
             <div class="row g-5 pt-5">
                 <div class="col-lg-6 align-self-center text-center text-lg-start mb-lg-5">
-                    <h1 class="display-4 text-white mb-4 animated slideInRight">Our Products</h1>
+                    <h1 class="display-4 text-white mb-4 animated slideInRight"><?php echo $name; ?></h1>
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb justify-content-center justify-content-lg-start mb-0">
                             <li class="breadcrumb-item"><a class="text-white" href="#">Home</a></li>
-                            <li class="breadcrumb-item"><a class="text-white" href="#">Pages</a></li>
-                            <li class="breadcrumb-item text-white active" aria-current="page">Our Products</li>
+                            <li class="breadcrumb-item"><a class="text-white" href="#">Products</a></li>
+                            <li class="breadcrumb-item text-white active" aria-current="page"><?php echo $name; ?></li>
                         </ol>
                     </nav>
                 </div>
@@ -60,10 +61,10 @@ $total_pages = ceil($total_rows / $no_of_records_per_page);
 <!-- Products Section -->
 <section class="products-section mt-5 mb-5">
     <div class="container">
-        <h2 class="mb-4">Products</h2>
+        <h2 class="mb-4"><?php echo $name; ?></h2>
         <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-4">
             <?php
-            $sql = "SELECT * FROM products LIMIT $offset, $no_of_records_per_page";
+            $sql = "SELECT * FROM products WHERE category = '$name' LIMIT $offset, $no_of_records_per_page";
             $result = $conn->query($sql);
             while ($row = mysqli_fetch_assoc($result)) {
                 $title = $row['title'];
@@ -129,7 +130,7 @@ if(isset($_POST["idpro"])) {
 		                 $qry="insert into cart values(null,'$pro_id','$user_id',1)"; 
                          $res=mysqli_query($conn,$qry);
                        if($res){ 
-                                  echo"<script> alert('Product Added To Your Cart...!!!');</script>"; 
+                                 // echo"<script> alert('Product Added To Your Cart...!!!');</script>"; 
                                
                                  }
                             else{
