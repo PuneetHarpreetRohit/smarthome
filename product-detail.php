@@ -16,6 +16,7 @@ $product_id = $row['product_id'];
 $title= $row['title'];
 $descripton= $row['descripton'];
 $pic= $row['image'];
+$category_name1 =$row['category'];
 $price= $row['price'];
 $image = "img/products/".$pic;
 ?>
@@ -25,6 +26,7 @@ $image = "img/products/".$pic;
 <html lang="en">
 
 <head>
+ 
     <meta charset="utf-8">
     <title><?php echo $title; ?> | Smart Home Devices</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
@@ -65,7 +67,7 @@ $image = "img/products/".$pic;
     <div class="custom-sidebar-wrapper">
         <div class="custom-search-widget">
             <h3>Search Keywords</h3>
-            <form action="searchedProducts.php" class="search-form" method="POST">
+            <form action="searchpro.php" class="search-form" method="POST">
                 <div class="input-group mb-3">
                     <input type="search" name="key" class="form-control" placeholder="Enter Search keywords" aria-label="Search keywords" aria-describedby="search-icon">
                     <button class="btn btn-outline-secondary" type="submit" id="search-icon"><i class="fas fa-search"></i></button>
@@ -131,8 +133,59 @@ $image = "img/products/".$pic;
                 </div>
                 <p class="lead my-5"><?php echo $descripton; ?></p>
             </div>
+             <!-- Product Details end -->
         </div>
+        </div> <!-- Main Content with Sidebar end -->
+      
+
+
+
+
+
+<div class="container">
+    <h2 class="mt-5 mb-4">Related Products</h2>
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-4">
         <?php
+        // Query to fetch related products based on the current category
+        $related_products_query = "SELECT * FROM products WHERE category = '$category_name1' LIMIT 6";
+        $related_products_result = mysqli_query($conn, $related_products_query);
+        while ($row = mysqli_fetch_assoc($related_products_result)) {
+            $related_title = $row['title'];
+            $related_image = "img/products/" . $row['image'];
+            $related_price = $row['price'];
+            $related_product_id = $row['product_id'];
+            ?>
+            <div class="col-md-4">
+                <div class="card mb-4">
+                    <img src="<?php echo $related_image; ?>" class="card-img-top" alt="<?php echo $related_title; ?>">
+                    <div class="card-body">
+                        <h5 class="card-title"><?php echo $related_title; ?></h5>
+                        <p class="card-text">Price: $<?php echo $related_price; ?></p>
+                        <div class="d-flex justify-content-between">
+                                <?php if (!isset($_SESSION['user_id'])) { ?>
+                                    <a href="user-login.php" class="btn btn-primary"><i class="fas fa-shopping-cart"></i> Add to Cart</a>
+                                    <a href="product-detail?id=<?php echo $related_product_id; ?>" class="btn btn-outline-secondary">View Details</a>
+                                <?php } else {
+                                    if (check_if_added_to_cart($related_product_id, $conn)) { ?>
+                                        <a href="#" class="btn btn-danger disabled"><i class="fas fa-shopping-cart"></i> Added to Cart</a>
+                                    <?php } else { ?>
+                                        <form method="POST" action="">
+                                            <input type="hidden" name="idpro" value="<?php echo $related_product_id; ?>">
+                                            <button type="submit" class="btn btn-primary"><i class="fas fa-shopping-cart"></i> Add to Cart</button>
+                                        </form>
+                                        <a href="product-detail?id=<?php echo $related_product_id; ?>" class="btn btn-outline-secondary">View Details</a>
+                                <?php }
+                                } ?>
+                            </div>
+                    </div>
+                </div>
+            </div>
+        <?php } ?>
+    </div>
+</div>
+
+
+<?php
 if(isset($_SESSION['user_id'])) {   
 
 
@@ -167,7 +220,6 @@ if(isset($_POST["idpro"])) {
                           echo "<meta http-equiv='refresh' content='0'>";
                          
                          } }?>
- </div>
 
  <?php include_once('footer.php'); ?>
 

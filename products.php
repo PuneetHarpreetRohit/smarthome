@@ -16,7 +16,7 @@ $total_rows = mysqli_fetch_array($result)[0];
 $total_pages = ceil($total_rows / $no_of_records_per_page);
 ?>
      
-    <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -141,9 +141,7 @@ if(isset($_POST["idpro"])) {
                           echo "<meta http-equiv='refresh' content='0'>";
                          
                          } }?>
- 
-            </div>
-            <!-- /.row -->
+  
 
 
 

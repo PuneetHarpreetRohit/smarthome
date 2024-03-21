@@ -95,54 +95,99 @@ if(isset($_SESSION['user_id']))
                     <div class="navbar-nav ms-auto">
                         <a href="index.php" class="nav-item nav-link active">Home</a>
                         <a href="about-us.php" class="nav-item nav-link">About Us</a>
-                        <a href="#" class="nav-item nav-link">Our Blogs</a>
-                         <div class="nav-item dropdown">
-                            <a href="products.php" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Products</a>
-                            <div class="dropdown-menu bg-light mt-2">
-                                <a href="office-desk.php" class="dropdown-item">Office Desk</a>
-                                <a href="home-automation.php" class="dropdown-item">Home Automation</a>
-                                <a href="alarm-system.php" class="dropdown-item">Alarm System</a>
-                                <a href="automation-device.php" class="dropdown-item">Automation Device</a>
-                                 
-                            </div>
-                        </div>
+                        <a href="blogs.php" class="nav-item nav-link">Our Blogs</a>
+                        <div class="nav-item dropdown">
+    <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Products</a>
+    <div class="dropdown-menu bg-light mt-2">
+        <?php
+		include_once 'dbcon.php'; // Include the database connection file
+        // Fetch categories from the database
+        $category_query = "SELECT DISTINCT category FROM products";
+        $category_result = mysqli_query($conn, $category_query);
+
+        // Generate URL slugs for each category and display in the menu
+        while ($category_row = mysqli_fetch_assoc($category_result)) {
+            $category_name = $category_row['category'];
+            // Generate URL slug
+            $category_slug = strtolower(str_replace(' ', '-', $category_name));
+            // Output category as a dropdown item
+            echo "<a href='category.php?category=$category_slug' class='dropdown-item'>$category_name</a>";
+        }
+ 
+        ?>
+    </div> 
+</div>
+
+                       
+                      
                      
                         <a href="#" class="nav-item nav-link">Contact Us</a>
 
                         <div class="shopping-cart">
-    <?php
-    if(isset($_SESSION['user_id'])) {
-        $u_id=$_SESSION['user_id'];
-        $resx=mysqli_query($conn,"SELECT * FROM cart WHERE user_id = $u_id");
-        $num=mysqli_num_rows($resx);
-        echo "<a class='nav-item nav-link' href='cart.php'><i class='fas fa-shopping-cart'></i> <span class='cart-item'>($num)</span> Cart</a>";
-    } else {
-        $num = 0; // Set the default value of num if user is not logged in
-        echo "<a  class='nav-item nav-link' href='cart.php'><i class='fas fa-shopping-cart'></i> <span class='cart-item'>($num)</span> Cart</a>";
-    }
-    ?>
-</div>
+						<?php
+						if(isset($_SESSION['user_id'])) {
+							$u_id=$_SESSION['user_id'];
+							$resx=mysqli_query($conn,"SELECT * FROM cart WHERE user_id = $u_id");
+							$num=mysqli_num_rows($resx);
+							echo "<a class='nav-item nav-link' href='cart.php'><i class='fas fa-shopping-cart'></i> <span class='cart-item'>($num)</span> Cart</a>";
+						} else {
+							$num = 0; // Set the default value of num if user is not logged in
+							echo "<a  class='nav-item nav-link' href='cart.php'><i class='fas fa-shopping-cart'></i> <span class='cart-item'>($num)</span> Cart</a>";
+						}
+						?>
+					</div>
 
-						
-<div class="nav-item dropdown">
-    <?php
-    if(!isset($_SESSION['user_id'])) {
-        echo '<a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Login/Signup</a>';
-        echo '<div class="dropdown-menu bg-light mt-2">';
-        echo '<a href="user-login.php" class="dropdown-item">User Login</a>';
-        echo '<a href="signup.php" class="dropdown-item">Signup</a>';
-        echo '</div>';
-    }
-    ?>
-</div>
+											
+					<div class="nav-item dropdown">
+						<?php
+						if(!isset($_SESSION['user_id'])) {
+							echo '<a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Login/Signup</a>';
+							echo '<div class="dropdown-menu bg-light mt-2">';
+							echo '<a href="user-login.php" class="dropdown-item">User Login</a>';
+							echo '<a href="signup.php" class="dropdown-item">Signup</a>';
+							echo '</div>';
+						}
+						?>
+					</div>
+ <!-- Search Icon -->
+ <li class="nav-item">
+                        <a href="#" class="nav-link" id="searchIcon">
+                            <i class="fas fa-search"></i>
+                        </a>
+                    </li>
 
-
-   
-
-                    <butaton type="button" class="btn text-white p-0 d-none d-lg-block" data-bs-toggle="modal"
-                        data-bs-target="#searchModal"><i class="fa fa-search"></i></butaton>
+                    <!-- Search Form -->
+                    <li class="nav-item" id="searchForm" style="display: none;">
+                        <form action="searchpro.php" class="search-form" method="POST">
+                            <div class="input-group mb-3">
+                                <input type="search" name="key" class="form-control" placeholder="Enter Search keywords" aria-label="Search keywords" aria-describedby="search-icon">
+                                <button class="btn btn-outline-secondary" type="submit" id="search-icon"><i class="fas fa-search"></i></button>
+                            </div>
+                        </form>
+                    </li>
+					</div>
                 </div>
             </nav>
         </div>
     </div>
+	</div>
     <!-- Navbar End -->
+
+    
+<script>
+    // JavaScript to toggle search form visibility
+    document.addEventListener("DOMContentLoaded", function() {
+        const searchIcon = document.getElementById('searchIcon');
+        const searchForm = document.getElementById('searchForm');
+
+        searchIcon.addEventListener('click', function() {
+            searchForm.style.display = 'block';
+        });
+
+        document.addEventListener('click', function(event) {
+            if (!searchIcon.contains(event.target) && !searchForm.contains(event.target)) {
+                searchForm.style.display = 'none';
+            }
+        });
+    });
+</script>
