@@ -44,28 +44,33 @@ header('location:admin-login.php');
 
 
 
-    <!-- Admin Dashboard Start -->
- 
-    <h2>Upload Product</h2>
-    <form action="upload_process.php" method="POST" enctype="multipart/form-data">
-        <label for="title">Title:</label><br>
-        <input type="text" id="title" name="title" required><br><br>
-        
-        <label for="category">Category:</label><br>
-        <input type="text" id="category" name="category" required><br><br>
-        
-        <label for="description">Description:</label><br>
-        <textarea id="description" name="description" rows="4" required></textarea><br><br>
-        
-        <label for="price">Price:</label><br>
-        <input type="text" id="price" name="price" required><br><br>
-        
-        <label for="image">Image:</label><br>
-        <input type="file" id="image" name="image" required><br><br>
-        
-        <input type="submit" value="Upload Product">
-    </form>
-        
+    <!-- Upload Product Start -->
+    <div class="container">
+        <h2>Upload Product</h2>
+        <form action="upload_process.php" method="POST" enctype="multipart/form-data">
+            <div class="mb-3">
+                <label for="title" class="form-label">Title:</label>
+                <input type="text" class="form-control" id="title" name="title" required>
+            </div>
+            <div class="mb-3">
+                <label for="category" class="form-label">Category:</label>
+                <input type="text" class="form-control" id="category" name="category" required>
+            </div>
+            <div class="mb-3">
+                <label for="description" class="form-label">Description:</label>
+                <textarea class="form-control" id="description" name="description" rows="4" required></textarea>
+            </div>
+            <div class="mb-3">
+                <label for="price" class="form-label">Price:</label>
+                <input type="text" class="form-control" id="price" name="price" required>
+            </div>
+            <div class="mb-3">
+                <label for="image" class="form-label">Image:</label>
+                <input type="file" class="form-control" id="image" name="image" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Upload Product</button>
+        </form>
+    </div>
 
 
 
