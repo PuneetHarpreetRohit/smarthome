@@ -12,7 +12,7 @@ if(isset($_GET['category'])) {
     $category_query = "SELECT category FROM products WHERE LOWER(REPLACE(category, ' ', '-')) = '$category_slug'";
     $category_result = mysqli_query($conn, $category_query);
     $category_row = mysqli_fetch_assoc($category_result);
-    $category_name = $category_row['category'];
+    $category_name1 = $category_row['category'];
 
     // Fetch products belonging to the selected category
     $products_query = "SELECT * FROM products WHERE LOWER(REPLACE(category, ' ', '-')) = '$category_slug'";
@@ -29,9 +29,9 @@ if(isset($_GET['category'])) {
 
 <head>
     <meta charset="utf-8">
-    <title><?php echo $category_name; ?> | Smart Home Devices</title>
+    <title><?php echo $category_name1; ?> | Smart Home Devices</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
-    <meta content="Smart Home Devices <?php echo $category_name; ?>, Home Devices" name="keywords">
+    <meta content="Smart Home Devices <?php echo $category_name1; ?>, Home Devices" name="keywords">
     <meta content="Buy Smart Home Devices" name="description">
 
     <?php include_once('header.php'); ?>
@@ -43,12 +43,12 @@ if(isset($_GET['category'])) {
         <div class="container pt-5">
             <div class="row g-5 pt-5">
                 <div class="col-lg-6 align-self-center text-center text-lg-start mb-lg-5">
-                    <h1 class="display-4 text-white mb-4 animated slideInRight"><?php echo $category_name; ?></h1>
+                    <h1 class="display-4 text-white mb-4 animated slideInRight"><?php echo $category_name1; ?></h1>
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb justify-content-center justify-content-lg-start mb-0">
                             <li class="breadcrumb-item"><a class="text-white" href="#">Home</a></li>
                             <li class="breadcrumb-item"><a class="text-white" href="#">Products</a></li>
-                            <li class="breadcrumb-item text-white active" aria-current="page"><?php echo $category_name; ?></li>
+                            <li class="breadcrumb-item text-white active" aria-current="page"><?php echo $category_name1; ?></li>
                         </ol>
                     </nav>
                 </div>
