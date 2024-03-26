@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Mar 26, 2024 at 05:21 PM
+-- Generation Time: Mar 26, 2024 at 05:54 PM
 -- Server version: 8.0.31
 -- PHP Version: 8.0.26
 
@@ -130,18 +130,17 @@ CREATE TABLE IF NOT EXISTS `order_details` (
 --
 
 INSERT INTO `order_details` (`id`, `fname`, `email`, `user_id`, `contact1`, `contact2`, `address`, `state`, `city`, `orderdate`, `orderid`, `status`) VALUES
-(1, 'testingg', 'singh@gmail.com', '2', '0123456789', '', 'Village testingg', 'VAS', 'city', '2024-03-06 16:37:43', 'req-36127-65e89bd724862', 'confirmed'),
-(2, 'testingg', 'singh@gmail.com', '2', '0123456789', '', 'Village testingg', 'VAS', 'city', '2024-03-06 16:39:53', 'req-76019-65e89c5935af3', 'confirmed'),
+(1, 'testingg', 'singh@gmail.com', '2', '0123456789', '', 'Village testingg', 'VAS', 'city', '2024-03-26 17:49:18', 'req-36127-65e89bd724862', 'pending'),
+(2, 'testingg', 'singh@gmail.com', '2', '0123456789', '', 'Village testingg', 'VAS', 'city', '2024-03-26 17:45:28', 'req-76019-65e89c5935af3', 'pending'),
 (3, 'Rohit', 'rohit@gmail.com', '2', '0123456874', '', '123 Main Street', 'Ontario', 'Toronto', '2024-03-06 16:54:58', 'req-34357-65e89fe2dd076', 'confirmed'),
-(4, 'Harpreet Singh', 'harpreetsg@gmail.com', '2', '1234567410', '', '123 Main Street', 'Ontario', 'Toronto', '2024-03-06 11:30:31', 'req-73802-65e8a12fb27a0', 'confirmed'),
+(4, 'Harpreet Singh', 'harpreetsg@gmail.com', '2', '1234567410', '', '123 Main Street', 'Ontario', 'Toronto', '2024-03-26 17:53:37', 'req-73802-65e8a12fb27a0', 'complete'),
 (5, 'Harpreet Singh', 'harpreet22@gmail.com', '2', '0124574854', '', '', '', '', '2024-03-06 11:32:53', 'req-72002-65e8a1bda22d6', 'confirmed'),
-(6, 'testingg', 'jaspritsinghghuman@gmail.com', '2', '09878044183', '', '', '', '', '2024-03-06 11:41:46', 'req-61854-65e8a3d27a3b6', 'confirmed'),
 (7, 'testingg', 'ssss@gmail.com', '2', '03213232323', '', 'Village testingg', '', '', '2024-03-06 11:42:17', 'req-62555-65e8a3f187d41', 'confirmed'),
-(8, 'testingg', 'ssss@gmail.com', '2', '043434383', '', '', '', '', '2024-03-06 11:46:29', 'req-97863-65e8a4ed64d8b', 'confirmed'),
+(8, 'testingg', 'ssss@gmail.com', '2', '043434383', '', '', '', '', '2024-03-26 17:49:36', 'req-97863-65e8a4ed64d8b', 'complete'),
 (9, 'test', 'fdsfsd@ggg.com', '2', '3423432423', '', '', '', '', '2024-03-06 11:52:11', 'req-52592-65e8a643f3832', 'confirmed'),
 (10, 'testingg', 'ghuman@gmail.com', '2', '012321322', '', 'Village testingg', '', '', '2024-03-06 11:59:13', 'req-83893-65e8a7e9342cb', 'confirmed'),
 (11, 'sassa', 'ssaas@sss.com', '2', '2222222222', '', '', '', '', '2024-03-06 12:09:46', 'req-41222-65e8aa6239fb3', 'confirmed'),
-(12, 'Rohit', 'rohit@smart.com', '2', '1234567841', '', '', '', '', '2024-03-06 13:54:59', 'req-58126-65e8c30b598fe', 'confirmed'),
+(12, 'Rohit', 'rohit@smart.com', '2', '1234567841', '', '', '', '', '2024-03-26 17:51:53', 'req-58126-65e8c30b598fe', 'confirmed'),
 (13, 'Singh', 'singh@smarthome.com', '5', '12345678911', '44445551261', '1690 Bergnaum Expressway,', 'PA 18140', 'New Carrollshir', '2024-03-06 14:22:28', 'req-48845-65e8c97cd1b94', 'confirmed');
 
 -- --------------------------------------------------------
