@@ -63,6 +63,9 @@
                 <div class="collapse navbar-collapse" id="navbarCollapse">
                     <div class="navbar-nav ms-auto">
                         <a href="admin-dashboard.php" class="nav-item nav-link active">Home</a>
+
+                        
+                        <a href="order-details.php" class="nav-item nav-link">Order Details</a>
                         <a href="upload-products.php" class="nav-item nav-link">Upload Product</a>
                         <a href="update_product.php?id=1" class="nav-item nav-link">Edit Product</a>
                         <a href="delete-products.php" class="nav-item nav-link">Delete Product</a>
