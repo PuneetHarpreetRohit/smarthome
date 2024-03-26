@@ -45,7 +45,7 @@ header('location:admin-login.php');
 
 
     <!-- Upload Product Start -->
-    <div class="container">
+    <div class="container mt-3">
         <h2>Upload Product</h2>
         <form action="upload_process.php" method="POST" enctype="multipart/form-data">
             <div class="mb-3">

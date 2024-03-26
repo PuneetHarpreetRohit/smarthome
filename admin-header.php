@@ -67,13 +67,13 @@
                         
                         <a href="order-details.php" class="nav-item nav-link">Order Details</a>
                         <a href="upload-products.php" class="nav-item nav-link">Upload Product</a>
-                        <a href="update_product.php?id=1" class="nav-item nav-link">Edit Product</a>
-                        <a href="delete-products.php" class="nav-item nav-link">Delete Product</a>
+                        <a href="delete-products.php" class="nav-item nav-link"> Edit / Delete Product</a>
+                        <a href="#" class="nav-item nav-link">Blogs</a>
  
                        
                       
                      
-                        <a href="#" class="nav-item nav-link">Logout</a>
+                       
 
                         
  

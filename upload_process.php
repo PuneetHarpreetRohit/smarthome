@@ -30,6 +30,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (file_exists($targetFile)) {
         echo "Sorry, file already exists.";
         $uploadOk = 0;
+        echo '<script>window.location.href = "delete-products.php";</script>';
     }
     
     // Check file size
@@ -48,6 +49,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Check if $uploadOk is set to 0 by an error
     if ($uploadOk == 0) {
         echo "Sorry, your file was not uploaded.";
+        echo '<script>window.location.href = "delete-products.php";</script>';
     // if everything is ok, try to upload file
     } else {
         if (move_uploaded_file($_FILES["image"]["tmp_name"], $targetFile)) {
@@ -55,11 +57,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $insertQuery = "INSERT INTO products (title, category, description, price, image) VALUES ('$title', '$category', '$description', '$price', '$targetFile')";
             if ($conn->query($insertQuery) === TRUE) {
                 echo "Product uploaded successfully.";
+                echo '<script>window.location.href = "delete-products.php";</script>';
             } else {
                 echo "Error: " . $insertQuery . "<br>" . $conn->error;
             }
         } else {
             echo "Sorry, there was an error uploading your file.";
+            echo '<script>window.location.href = "delete-products.php";</script>';
         }
     }
 }
