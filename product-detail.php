@@ -76,24 +76,39 @@ $image = $pic;
         </div>
         <div class="custom-category-widget">
             <h3>Categories</h3>
-            <ul>
-            <li><a href="office-desk.php">Office Desk <span>(<?php 
-                     $qry="select count(*) as total3 from products where category='Office Desk'";
-                     $res= mysqli_query($conn, $qry);  while($row= mysqli_fetch_array($res))   
-                     {    echo $row['total3']; }?>)</span></a></li>
-                <li><a href="home-automation.php">Home Automation<span>(<?php 
-                     $qry="select count(*) as total1 from products where category='Home Automation'";
-                     $res= mysqli_query($conn, $qry);  while($row= mysqli_fetch_array($res))   
-                     {    echo $row['total1']; }?>)</span></a></li> 
-                <li><a href="alarm-system.php">Alarm System<span>(<?php 
-                     $qry="select count(*) as total2 from products where category='Alarm System'";
-                     $res= mysqli_query($conn, $qry);  while($row= mysqli_fetch_array($res))   
-                     {    echo $row['total2']; }?>)</span></a></li> 
-                <li><a href="automation-device.php">Automation Device <span>(<?php 
-                     $qry="select count(*) as total3 from products where category='Automation Device' ";
-                     $res= mysqli_query($conn, $qry);  while($row= mysqli_fetch_array($res))   
-                     {    echo $row['total3']; }?>)</span></a></li>
-            </ul>
+
+            <?php
+
+
+// Fetch unique categories from the products table
+$category_query = "SELECT DISTINCT category FROM products";
+$category_result = mysqli_query($conn, $category_query);
+
+// Initialize an array to store category counts
+$category_counts = array();
+
+// Loop through each category to count the number of products
+while ($row = mysqli_fetch_assoc($category_result)) {
+    $category = $row['category'];
+    $count_query = "SELECT COUNT(*) AS count FROM products WHERE category = '$category'";
+    $count_result = mysqli_query($conn, $count_query);
+    $count_row = mysqli_fetch_assoc($count_result);
+    $category_counts[$category] = $count_row['count'];
+}
+
+// Display the categories with the counts
+echo "<ul>";
+foreach ($category_counts as $category => $count) {
+    // Create a link to a category listing page, adjust the href as needed
+    $category_slug = strtolower(str_replace(' ', '-', $category));
+    echo "<li><a href='category.php?category=$category_slug'>$category ($count)</a></li>";
+}
+echo "</ul>";
+
+ 
+?>
+
+       
         </div>
     </div>
 </div>
@@ -151,7 +166,7 @@ $image = $pic;
         $related_products_result = mysqli_query($conn, $related_products_query);
         while ($row = mysqli_fetch_assoc($related_products_result)) {
             $related_title = $row['title'];
-            $related_image = "img/products/" . $row['image'];
+            $related_image =  $row['image'];
             $related_price = $row['price'];
             $related_product_id = $row['product_id'];
             ?>
