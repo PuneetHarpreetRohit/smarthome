@@ -74,10 +74,10 @@ if(isset($_GET['category'])) {
                     $title = $row['title'];
                     $id = $row['product_id'];
                     $img = $row['image'];
-                    $descripton = $row['descripton'];
+                    $description = $row['description'];
                     $date = $row['date'];
                     $price = $row['price'];
-                    $image = "img/products/" . $img;
+                    $image =  $img;
             ?>
                     <!-- Product Card -->
                     <div class="col-md-4 mb-4">

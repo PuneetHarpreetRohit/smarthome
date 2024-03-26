@@ -14,11 +14,11 @@ $result = $conn->query($sql);
 $row = mysqli_fetch_assoc($result);
 $product_id = $row['product_id'];
 $title= $row['title'];
-$descripton= $row['descripton'];
+$description= $row['description'];
 $pic= $row['image'];
 $category_name1 =$row['category'];
 $price= $row['price'];
-$image = "img/products/".$pic;
+$image = $pic;
 ?>
 
 
@@ -131,7 +131,7 @@ $image = "img/products/".$pic;
                             </div>
                     </div>
                 </div>
-                <p class="lead my-5"><?php echo $descripton; ?></p>
+                <p class="lead my-5"><?php echo $description; ?></p>
             </div>
              <!-- Product Details end -->
         </div>

@@ -45,7 +45,7 @@
 
     
     ?>
-	  <a href="#"><span><i class="fa fa-user"></i> Admin</span></a>
+	  <a href="admin-dashboard.php"><span><i class="fa fa-user"></i> Admin</span></a>
 	  <a href="user-login.php"><span><i class="fa fa-users"></i> User</span></a>
 
     <?php   }
