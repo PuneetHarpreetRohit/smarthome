@@ -38,7 +38,7 @@ header('location:admin-login.php');
                 $row = mysqli_fetch_assoc($result);
                 // Display a form to edit the product details
                 ?>
-                <form action="update_product.php" method="POST">
+                <form action="edit-update-product.php" method="POST">
                     <input type="hidden" name="product_id" value="<?php echo $row['product_id']; ?>">
                     <div class="mb-3">
                         <label for="title" class="form-label">Title</label>

@@ -79,7 +79,7 @@ include_once 'dbcon.php'; // Include the database connection file
                                     ?>
 									<tr>
                                         <td class="product">
-                                            <img src="img/products/<?php echo $image; ?>" alt="<?php echo $title; ?>" class="product-image">
+                                            <img src="<?php echo $image; ?>" alt="<?php echo $title; ?>" class="product-image">
                                             <span class="product-title"><?php echo $title; ?></span>
                                         </td>
                                         <td class="price">$<?php echo $price; ?></td>

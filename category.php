@@ -64,7 +64,7 @@ if(isset($_GET['category'])) {
 
     <!-- Add your HTML content here to display products based on the selected category -->
     <div class="container mt-5">
-        <h2 class="mb-4">Products in <?php echo $category_name; ?></h2>
+        <h2 class="mb-4">Products in <?php echo $category_name1; ?></h2>
         <div class="row">
             <?php
             // Check if products are available for the selected category
@@ -89,7 +89,7 @@ if(isset($_GET['category'])) {
                                 <div class="d-flex justify-content-between">
                                 <?php if (!isset($_SESSION['user_id'])) { ?>
                                     <a href="user-login.php" class="btn btn-primary"><i class="fas fa-shopping-cart"></i> Add to Cart</a>
-                                    <a href="product-detail?id=<?php echo $id; ?>" class="btn btn-outline-secondary">View Details</a>
+                                    <a href="product-detail.php?id=<?php echo $id; ?>" class="btn btn-outline-secondary">View Details</a>
                                 <?php } else {
                                     if (check_if_added_to_cart($id, $conn)) { ?>
                                         <a href="#" class="btn btn-danger disabled"><i class="fas fa-shopping-cart"></i> Added to Cart</a>
@@ -98,7 +98,7 @@ if(isset($_GET['category'])) {
                                             <input type="hidden" name="idpro" value="<?php echo $id; ?>">
                                             <button type="submit" class="btn btn-primary"><i class="fas fa-shopping-cart"></i> Add to Cart</button>
                                         </form>
-                                        <a href="product-detail?id=<?php echo $id; ?>" class="btn btn-outline-secondary">View Details</a>
+                                        <a href="product-detail.php?id=<?php echo $id; ?>" class="btn btn-outline-secondary">View Details</a>
                                 <?php }
                                 } ?>
                             </div>

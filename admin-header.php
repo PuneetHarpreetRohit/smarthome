@@ -68,7 +68,7 @@
                         <a href="order-details.php" class="nav-item nav-link">Order Details</a>
                         <a href="upload-products.php" class="nav-item nav-link">Upload Product</a>
                         <a href="delete-products.php" class="nav-item nav-link"> Edit / Delete Product</a>
-                        <a href="#" class="nav-item nav-link">Blogs</a>
+                        <a href="upload-blog.php" class="nav-item nav-link">Blogs</a>
  
                        
                       
