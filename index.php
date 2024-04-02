@@ -1,7 +1,12 @@
 <?php
 session_start();
+include 'dbcon.php'; // Include database connection file
 
-    ?>
+require 'check_if_added.php';
+ 
+ 
+?>
+?>
     <!DOCTYPE html>
 <html lang="en">
 
@@ -70,8 +75,146 @@ session_start();
         </div>
     </div>
     <!-- About us Section End -->
+ 
+  <!-- About us Section Start -->
+  <div class="container-fluid py-5">
+        <div class="container">
+        <h2 class="mb-4">Our Blogs</h2>
+<?php
+// Fetch all blog posts from the database
+$sql = "SELECT * FROM blog_posts LIMIT 4";
+$result = mysqli_query($conn, $sql);
+
+// Check if there are blog posts
+if(mysqli_num_rows($result) > 0) {
+    echo '<div class="row">';
+    // Display blog posts
+    while($row = mysqli_fetch_assoc($result)) {
+        echo '<div class="col-md-3 mb-4">';
+        echo '<div class="card h-100 border rounded shadow-sm">';
+        echo '<div class="card-body">';
+        echo '<h5 class="card-title">' . $row['title'] . '</h5>';
+        echo '<p class="card-text">' . $row['created_at'] . '</p>';
+        echo '<a href="post-detail.php?id=' . $row['id'] . '" class="btn btn-primary">View Detail</a>';
+        echo '</div>';
+        echo '</div>';
+        echo '</div>';
+    }
+    echo '</div>';
+} else {
+    // No blog posts found
+    echo '<div class="alert alert-info" role="alert">No blog posts found.</div>';
+}
 
  
+?>
+</div>
+        </div>
+
+
+
+
+
+<!-- Products Section -->
+<section class="products-section mt-5 mb-5">
+    <div class="container">
+        <h2 class="mb-4">Products</h2>
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-4">
+            <?php
+            $sql = "SELECT * FROM products LIMIT 4";
+            $result = $conn->query($sql);
+            while ($row = mysqli_fetch_assoc($result)) {
+                $title = $row['title'];
+                $id = $row['product_id'];
+                $pic = $row['image'];
+                $price = $row['price'];
+                $image = $pic;
+            ?>
+                <div class="col">
+                    <div class="card mb-4 product-card">
+                        <img src="<?php echo $image; ?>" class="card-img-top" alt="<?php echo $title; ?>">
+                        <div class="card-body">
+                            <h5 class="card-title"><?php echo $title; ?></h5>
+                            <p class="card-text">Price: $<?php echo $price; ?></p>
+                            <div class="d-flex justify-content-between">
+                                <?php if (!isset($_SESSION['user_id'])) { ?>
+                                    <a href="user-login.php" class="btn btn-primary"><i class="fas fa-shopping-cart"></i> Add to Cart</a>
+                                    <a href="product-detail.php?id=<?php echo $id; ?>" class="btn btn-outline-secondary">View Details</a>
+                                <?php } else {
+                                    if (check_if_added_to_cart($id, $conn)) { ?>
+                                        <a href="#" class="btn btn-danger disabled"><i class="fas fa-shopping-cart"></i> Added to Cart</a>
+                                    <?php } else { ?>
+                                        <form method="POST" action="">
+                                            <input type="hidden" name="idpro" value="<?php echo $id; ?>">
+                                            <button type="submit" class="btn btn-primary"><i class="fas fa-shopping-cart"></i> Add to Cart</button>
+                                        </form>
+                                        <a href="product-detail.php?id=<?php echo $id; ?>" class="btn btn-outline-secondary">View Details</a>
+                                <?php }
+                                } ?>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            <?php } ?>
+        </div>
+    </div>
+</section>
+
+
+            <?php
+            if(isset($_SESSION['user_id'])) {   
+
+
+            $user_id=$_SESSION['user_id'];
+            include_once 'dbcon.php'; // Include the database connection file
+
+
+            if(isset($_POST["idpro"])) {
+            $pro_id = $_POST['idpro'];
+
+
+
+            $ress=mysqli_query($conn," SELECT * FROM cart where user_id='$user_id' AND product_id='$pro_id'");
+            if(mysqli_num_rows($ress)>0){
+                echo"<script> alert('Product Already Added...');</script>";
+
+            }
+            else{
+                    
+            $qry="insert into cart values(null,'$pro_id','$user_id',1)"; 
+            $res=mysqli_query($conn,$qry);
+            if($res){ 
+                
+
+                }
+            else{
+                echo"<script> alert('Sorry Please Try Again...');</script>";
+                
+            }
+
+            } 
+            echo "<meta http-equiv='refresh' content='0'>";
+
+            } }?>
+
+        <script>
+            // JavaScript code to set equal height for product cards in each row
+            document.addEventListener("DOMContentLoaded", function() {
+                const rows = document.querySelectorAll('.products-section .row');
+                rows.forEach(row => {
+                    let maxHeight = 0;
+                    row.querySelectorAll('.product-card').forEach(card => {
+                        const cardHeight = card.offsetHeight;
+                        if (cardHeight > maxHeight) {
+                            maxHeight = cardHeight;
+                        }
+                    });
+                    row.querySelectorAll('.product-card').forEach(card => {
+                        card.style.height = `${maxHeight}px`;
+                    });
+                });
+            });
+        </script>
 
 
  <?php include_once('footer.php'); ?>

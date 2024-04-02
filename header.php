@@ -121,7 +121,7 @@ if(isset($_SESSION['user_id']))
                        
                       
                      
-                        <a href="#" class="nav-item nav-link">Contact Us</a>
+                        <a href="contact-us.php" class="nav-item nav-link">Contact Us</a>
 
                         <div class="shopping-cart">
 						<?php
@@ -191,3 +191,4 @@ if(isset($_SESSION['user_id']))
         });
     });
 </script>
+
