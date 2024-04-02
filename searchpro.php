@@ -100,7 +100,7 @@ $datakey = $_POST["key"];
                                     $description = $row['description'];
                                     $date = $row['date'];
                                     $price = $row['price'];
-                                    $image = "img/products/" . $img;
+                                    $image =  $img;
                         ?>
                                     <div class="col">
                                         <div class="card mb-4 product-card">
@@ -111,12 +111,12 @@ $datakey = $_POST["key"];
                                                 <div class="d-flex justify-content-between">
                                                     <?php if (!isset($_SESSION['user_id'])) { ?>
                                                         <a href="user-login.php" class="btn btn-primary"><i class="fas fa-shopping-cart"></i> Add to Cart</a>
-                                                        <a href="product-detail?id=<?php echo $id; ?>" class="btn btn-outline-secondary">View Details</a>
+                                                        <a href="product-detail.php?id=<?php echo $id; ?>" class="btn btn-outline-secondary">View Details</a>
                                                     <?php } else {
                                                         if (check_if_added_to_cart($id, $conn)) { ?>
                                                             <a href="#" class="btn btn-danger disabled"><i class="fas fa-shopping-cart"></i> Added to Cart</a>
                                                         <?php } else { ?>
-                                                            <a href="product-detail?id=<?php echo $id; ?>" class="btn btn-outline-secondary">View Details</a>
+                                                            <a href="product-detail.php?id=<?php echo $id; ?>" class="btn btn-outline-secondary">View Details</a>
                                                     <?php }
                                                     } ?>
                                                 </div>

@@ -4,6 +4,7 @@ if(!isset($_SESSION['admin']))
 {
 header('location:admin-login.php');
 }
+include_once('dbcon.php');
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -54,7 +55,26 @@ header('location:admin-login.php');
             </div>
             <div class="mb-3">
                 <label for="category" class="form-label">Category:</label>
-                <input type="text" class="form-control" id="category" name="category" required>
+                <select class="form-select" id="category" name="category" required>
+                    <option selected disabled>Select Category</option>
+                    <?php
+                    // Fetch categories from the database
+                    $category_query = "SELECT DISTINCT category FROM products";
+                    $category_result = mysqli_query($conn, $category_query);
+                    while ($category_row = mysqli_fetch_assoc($category_result)) {
+                        echo "<option>" . $category_row['category'] . "</option>";
+                    }
+                    ?>
+                     <option value="new">Add New Category</option>
+                </select>
+            </div>
+            <div class="mb-3" id="newCategoryField" style="display: none;">
+                <label for="newCategory" class="form-label">New Category:</label>
+                <input type="text" class="form-control" id="newCategory" name="newCategory">
+            </div>
+            <div class="mb-3">
+                <label for="keywords" class="form-label">Keywords:</label>
+                <input type="text" class="form-control"placeholder="For example: Smart,Bulb" id="keywords" name="keywords" required>
             </div>
             <div class="mb-3">
                 <label for="description" class="form-label">Description:</label>
@@ -72,6 +92,18 @@ header('location:admin-login.php');
         </form>
     </div>
 
-
+    <script>
+        document.getElementById('category').addEventListener('change', function() {
+            var newCategoryField = document.getElementById('newCategoryField');
+            var newCategoryInput = document.getElementById('newCategory');
+            if (this.value === 'new') {
+                newCategoryField.style.display = 'block';
+                newCategoryInput.required = true;
+            } else {
+                newCategoryField.style.display = 'none';
+                newCategoryInput.required = false;
+            }
+        });
+    </script>
 
    <?php include_once('footer.php'); ?>

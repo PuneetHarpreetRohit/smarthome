@@ -8,6 +8,7 @@ include 'dbcon.php';
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $title = $_POST['title'];
     $category = $_POST['category'];
+    $keywords = $_POST['keywords'];
     $description = $_POST['description'];
     $price = $_POST['price'];
     
@@ -59,7 +60,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     } else {
         if (move_uploaded_file($_FILES["image"]["tmp_name"], $targetFile)) {
             // Insert product details into database
-            $insertQuery = "INSERT INTO products (title, category, description, price, image) VALUES ('$title', '$category', '$description', '$price', '$targetFile')";
+            $insertQuery = "INSERT INTO products (title, category, keywords, description, price, image) VALUES ('$title', '$category', '$keywords', '$description', '$price', '$targetFile')";
             if ($conn->query($insertQuery) === TRUE) {
                 echo "<script>alert('Product uploaded successfully.');</script>";
                

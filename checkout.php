@@ -105,7 +105,6 @@ include_once 'dbcon.php'; // Include the database connection file
                             <tbody>
                                 <?php 
                                 $res=mysqli_query($conn," SELECT * FROM cart where user_id = $user_id");
-                                $target_dir = "img/products/";
                                 while($row=mysqli_fetch_array($res))
                                 {
                                     $cart_id=$row[0];
@@ -116,7 +115,7 @@ include_once 'dbcon.php'; // Include the database connection file
                                     {
                                         $img=$rows[4];
                                         $title=$rows[2];
-                                        $imagesdata = $target_dir.$img ;
+                                        $imagesdata = $img ;
                                 ?>
                                 <tr>
                                     <td class="prod-column">

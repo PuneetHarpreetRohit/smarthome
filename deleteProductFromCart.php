@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-// Include your database connection file
+// Include database connection file
 include 'dbcon.php';
 
 if ($_SERVER["REQUEST_METHOD"] == "GET") {

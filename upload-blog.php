@@ -57,7 +57,7 @@ header('location:admin-login.php');
                 <textarea type="text" class="form-control" id="content" name="content"  rows="4" cols="50" required></textarea>
             </div>
              
-            <button type="submit" class="btn btn-primary">Upload Blog Post</button>
+            <button type="submit" class="btn btn-primary mt-5 mb-5">Upload Blog Post</button>
         </form>
     </div>
 

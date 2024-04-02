@@ -20,11 +20,11 @@ if (isset($_GET['product_id']) && is_numeric($_GET['product_id'])) {
     mysqli_close($conn);
     
     // Redirect back to manage products page
-    echo '<script>window.location.href = "delete-products.php";</script>';
+    echo '<script>window.location.href = "manage-products.php";</script>';
 } else {
     // Invalid product ID
     echo '<script>alert("Invalid product ID.");</script>';
     // Redirect back to manage products page
-    echo '<script>window.location.href = "delete-products.php";</script>';
+    echo '<script>window.location.href = "manage-products.php";</script>';
 }
 ?>

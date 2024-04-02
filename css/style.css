@@ -1,5 +1,12 @@
 /*** Order Deatils ***/
 
+/* Define the hover effect for all buttons */
+.btn:hover {
+      
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1), 0 6px 20px rgba(0, 0, 0, 0.1); /* Shadow effect */
+    transform: translateY(-2px); /* 3D effect: Move button slightly upwards */
+}
+
 /* Light Green Background */
 .bg-light-green {
     background-color: #d4edda !important;  

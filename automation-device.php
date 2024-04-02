@@ -71,7 +71,7 @@ $total_pages = ceil($total_rows / $no_of_records_per_page);
                 $id = $row['product_id'];
                 $pic = $row['image'];
                 $price = $row['price'];
-                $image = "img/products/" . $pic;
+                $image =  $pic;
             ?>
                 <div class="col">
                     <div class="card mb-4 product-card">

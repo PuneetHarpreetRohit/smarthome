@@ -104,7 +104,7 @@ $order_items = $result->fetch_all(MYSQLI_ASSOC);
         <?php foreach ($order_items as $item) : ?>
             <div class="col">
                 <div class="card">
-                    <img  src="img/products/<?php echo $item['image']; ?>" class="card-img-top resize-thanks" alt="<?php echo $item['title']; ?>">
+                    <img  src="<?php echo $item['image']; ?>" class="card-img-top resize-thanks" alt="<?php echo $item['title']; ?>">
                     <div class="card-body">
                         <h5 class="card-title"><?php echo $item['title']; ?></h5>
                         <p class="card-text">Quantity: <?php echo $item['quantity']; ?></p>
