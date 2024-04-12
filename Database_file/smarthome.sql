@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Apr 12, 2024 at 06:00 AM
+-- Generation Time: Apr 12, 2024 at 06:24 PM
 -- Server version: 8.0.31
 -- PHP Version: 8.0.26
 
@@ -82,7 +82,7 @@ CREATE TABLE IF NOT EXISTS `cart` (
   `user_id` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   `quantity` int NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=61 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=70 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `cart`
@@ -117,30 +117,39 @@ CREATE TABLE IF NOT EXISTS `order_details` (
   `orderdate` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
   `orderid` varchar(50) DEFAULT NULL,
   `status` varchar(20) NOT NULL,
+  `payment_mode` varchar(40) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `id` (`id`),
   UNIQUE KEY `orderid` (`orderid`)
-) ENGINE=MyISAM AUTO_INCREMENT=16 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=24 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `order_details`
 --
 
-INSERT INTO `order_details` (`id`, `fname`, `email`, `user_id`, `contact1`, `contact2`, `address`, `state`, `city`, `orderdate`, `orderid`, `status`) VALUES
-(1, 'testingg', 'singh@gmail.com', '2', '0123456789', '', 'Village testingg', 'VAS', 'city', '2024-04-02 20:29:18', 'req-36127-65e89bd724862', 'pending'),
-(2, 'testingg', 'singh@gmail.com', '2', '0123456789', '', 'Village testingg', 'VAS', 'city', '2024-03-26 17:45:28', 'req-76019-65e89c5935af3', 'pending'),
-(3, 'Rohit', 'rohit@gmail.com', '2', '0123456874', '', '123 Main Street', 'Ontario', 'Toronto', '2024-03-06 16:54:58', 'req-34357-65e89fe2dd076', 'confirmed'),
-(4, 'Harpreet Singh', 'harpreetsg@gmail.com', '2', '1234567410', '', '123 Main Street', 'Ontario', 'Toronto', '2024-03-26 17:53:37', 'req-73802-65e8a12fb27a0', 'complete'),
-(5, 'Harpreet Singh', 'harpreet22@gmail.com', '2', '0124574854', '', '', '', '', '2024-03-06 11:32:53', 'req-72002-65e8a1bda22d6', 'confirmed'),
-(14, 'testing', 'testing@gmail.com', '1', '0774414144', '', 'testingtestingtesting testing', 'testing', 'testing', '2024-04-02 13:04:00', 'req-90595-660c4f98e609a', 'confirmed'),
-(7, 'testingg', 'ssss@gmail.com', '2', '03213232323', '', 'Village testingg', '', '', '2024-03-06 11:42:17', 'req-62555-65e8a3f187d41', 'confirmed'),
-(8, 'testingg', 'ssss@gmail.com', '2', '043434383', '', '', '', '', '2024-03-26 17:49:36', 'req-97863-65e8a4ed64d8b', 'complete'),
-(9, 'test', 'fdsfsd@ggg.com', '2', '3423432423', '', '', '', '', '2024-03-06 11:52:11', 'req-52592-65e8a643f3832', 'confirmed'),
-(10, 'testingg', 'ghuman@gmail.com', '2', '012321322', '', 'Village testingg', '', '', '2024-03-06 11:59:13', 'req-83893-65e8a7e9342cb', 'confirmed'),
-(11, 'sassa', 'ssaas@sss.com', '2', '2222222222', '', '', '', '', '2024-03-05 12:09:46', 'req-41222-65e8aa6239fb3', 'confirmed'),
-(12, 'Rohit', 'rohit@smart.com', '2', '1234567841', '', '', '', '', '2024-04-12 05:56:25', 'req-58126-65e8c30b598fe', 'pending'),
-(13, 'Singh', 'singh@smarthome.com', '5', '12345678911', '44445551261', '1690 Bergnaum Expressway,', 'PA 18140', 'New Carrollshir', '2024-04-12 05:56:12', 'req-48845-65e8c97cd1b94', 'complete'),
-(15, 'Rohit Kumar', 'rohit@smarthome.com', '2', '+1548541444', '', '299 The Queensway S, Keswick,', 'ON', 'Keswick', '2024-04-12 00:25:26', 'req-38450-6618ccceb422e', 'confirmed');
+INSERT INTO `order_details` (`id`, `fname`, `email`, `user_id`, `contact1`, `contact2`, `address`, `state`, `city`, `orderdate`, `orderid`, `status`, `payment_mode`) VALUES
+(1, 'testingg', 'singh@gmail.com', '2', '0123456789', '', 'Village testingg', 'VAS', 'city', '2024-04-02 20:29:18', 'req-36127-65e89bd724862', 'complete', 'Cash on Delivery'),
+(2, 'testingg', 'singh@gmail.com', '2', '0123456789', '', 'Village testingg', 'VAS', 'city', '2024-03-26 17:45:28', 'req-76019-65e89c5935af3', 'pending', 'Cash on Delivery'),
+(3, 'Rohit', 'rohit@gmail.com', '2', '0123456874', '', '123 Main Street', 'Ontario', 'Toronto', '2024-03-06 16:54:58', 'req-34357-65e89fe2dd076', 'confirmed', 'Paid'),
+(4, 'Harpreet Singh', 'harpreetsg@gmail.com', '2', '1234567410', '', '123 Main Street', 'Ontario', 'Toronto', '2024-03-26 17:53:37', 'req-73802-65e8a12fb27a0', 'complete', 'Paid'),
+(5, 'Harpreet Singh', 'harpreet22@gmail.com', '2', '0124574854', '', '', '', '', '2024-03-06 11:32:53', 'req-72002-65e8a1bda22d6', 'confirmed', 'Cash on Delivery'),
+(14, 'testing', 'testing@gmail.com', '1', '0774414144', '', 'testingtestingtesting testing', 'testing', 'testing', '2024-04-02 13:04:00', 'req-90595-660c4f98e609a', 'complete', 'Paid'),
+(7, 'testingg', 'ssss@gmail.com', '2', '03213232323', '', 'Village testingg', '', '', '2024-03-06 11:42:17', 'req-62555-65e8a3f187d41', 'confirmed', 'Cash on Delivery'),
+(8, 'testingg', 'ssss@gmail.com', '2', '043434383', '', '', '', '', '2024-03-26 17:49:36', 'req-97863-65e8a4ed64d8b', 'complete', 'Paid'),
+(9, 'test', 'fdsfsd@ggg.com', '2', '3423432423', '', '', '', '', '2024-03-06 11:52:11', 'req-52592-65e8a643f3832', 'confirmed', 'Paid'),
+(10, 'testingg', 'ghuman@gmail.com', '2', '012321322', '', 'Village testingg', '', '', '2024-03-06 11:59:13', 'req-83893-65e8a7e9342cb', 'confirmed', 'Cash on Delivery'),
+(11, 'sassa', 'ssaas@sss.com', '2', '2222222222', '', '', '', '', '2024-03-05 12:09:46', 'req-41222-65e8aa6239fb3', 'confirmed', 'Paid'),
+(12, 'Rohit', 'rohit@smart.com', '2', '1234567841', '', '', '', '', '2024-04-12 05:56:25', 'req-58126-65e8c30b598fe', 'pending', 'Paid'),
+(13, 'Singh', 'singh@smarthome.com', '5', '12345678911', '44445551261', '1690 Bergnaum Expressway,', 'PA 18140', 'New Carrollshir', '2024-04-12 05:56:12', 'req-48845-65e8c97cd1b94', 'complete', 'Cash on Delivery'),
+(15, 'Rohit Kumar', 'rohit@smarthome.com', '2', '+1548541444', '', '299 The Queensway S, Keswick,', 'ON', 'Keswick', '2024-04-12 00:25:26', 'req-38450-6618ccceb422e', 'confirmed', 'Cash on Delivery'),
+(16, 'Harpreet Singh', 'harpreetsinghs0077@gmail.com', '1', '+78441441544', '', '299 The Queensway S, demo,', 'ON', 'Keswick', '2024-04-12 09:46:21', 'req-50293-66195045da42c', 'confirmed', 'Cash on Delivery'),
+(17, 'smarthome', 'info@smarthome.com', '1', '+59878044183', '', '299 The Queensway S, Keswick,', 'ON', 'Keswick', '2024-04-12 12:08:15', 'req-77908-661971870abb0', 'confirmed', 'Paid'),
+(18, 'Singh21', 'info@Singh21.com', '1', '+4478044183', '', '299 The Queensway S, Keswick,', 'ON', 'Keswick', '2024-04-12 12:09:25', 'req-34935-661971cd9feab', 'confirmed', 'Cash on Delivery'),
+(19, 'testingg', 'testingg@gmail.com', '1', '+3378044183', '', 'Village testingg', 'CAS', 'testingg', '2024-04-12 12:10:00', 'req-75398-661971f0d2a0e', 'confirmed', 'Paid'),
+(20, 'Jaspreet Singh', 'jaspritsinghghuman@gmail.com', '1', '09878044183', '', 'Village Rai Chak , Post office Naushera Majja Singh', 'Punjab', 'Rai Check', '2024-04-12 12:13:11', 'req-72222-661972af7c83e', 'confirmed', 'Paid'),
+(21, 'SSmarthome', 'info@SSmarthome.com', '1', '+78878044183', '', '299 The Queensway S, Keswick,', 'ON', 'Keswick', '2024-04-12 12:17:22', 'req-65523-661973aa7e190', 'confirmed', 'Cash on Delivery'),
+(22, 'DEmo Testing', 'testingg@gmail.com', '1', '+8978044183', '', 'Village testingg', 'testingg', 'testingg', '2024-04-12 12:19:46', 'req-44512-6619743ae335e', 'complete', 'Paid'),
+(23, 'Johe', 'Johe@Sarthome.com', '1', '+4478044183', '', '299 The Queensway S, Keswick,', 'ON', 'Keswick', '2024-04-12 12:22:13', 'req-98395-661974cdbdb03', 'confirmed', 'Paid');
 
 -- --------------------------------------------------------
 
@@ -156,7 +165,7 @@ CREATE TABLE IF NOT EXISTS `order_items` (
   `quantity` int NOT NULL,
   `orderid` varchar(50) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=28 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=37 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `order_items`
@@ -189,7 +198,16 @@ INSERT INTO `order_items` (`id`, `user_id`, `product_id`, `quantity`, `orderid`)
 (24, '1', '22', 3, 'req-90595-660c4f98e609a'),
 (25, '2', '5', 3, 'req-38450-6618ccceb422e'),
 (26, '2', '8', 2, 'req-38450-6618ccceb422e'),
-(27, '2', '2', 1, 'req-38450-6618ccceb422e');
+(27, '2', '2', 1, 'req-38450-6618ccceb422e'),
+(28, '1', '3', 1, 'req-50293-66195045da42c'),
+(29, '1', '3', 1, 'req-77908-661971870abb0'),
+(30, '1', '6', 2, 'req-34935-661971cd9feab'),
+(31, '1', '2', 1, 'req-75398-661971f0d2a0e'),
+(32, '1', '22', 1, 'req-72222-661972af7c83e'),
+(33, '1', '15', 1, 'req-65523-661973aa7e190'),
+(34, '1', '9', 1, 'req-44512-6619743ae335e'),
+(35, '1', '8', 1, 'req-44512-6619743ae335e'),
+(36, '1', '4', 10, 'req-98395-661974cdbdb03');
 
 -- --------------------------------------------------------
 
@@ -215,7 +233,7 @@ CREATE TABLE IF NOT EXISTS `products` (
 --
 
 INSERT INTO `products` (`product_id`, `category`, `title`, `description`, `image`, `date`, `keywords`, `price`) VALUES
-(1, 'Automation Device', 'Smart Thermostat Pro 2.0', '<ul class=\"list-group list-group-flush\">\r\n      <li class=\"list-group-item\">Intelligent Climate Control</li>\r\n      <li class=\"list-group-item\">Energy Efficiency</li>\r\n      <li class=\"list-group-item\">Remote Access</li>\r\n      <li class=\"list-group-item\">Compatibility</li>\r\n      <li class=\"list-group-item\">Smart Integrations</li>\r\n    </ul>\r\n\r\n<p class=\"lead my-5\">The Smart Thermostat Pro is an innovative home automation device that revolutionizes climate control. It offers advanced features and seamless integration, providing users with optimal comfort and energy efficiency.</p>', 'img/products/product-image.jpg', '2024-02-16 17:40:19', 'Smart Thermostat,home automation device,  2.0', 211),
+(1, 'Automation Device', 'Smart Thermostat Pro 2.1', '<ul class=\"list-group list-group-flush\">\r\n      <li class=\"list-group-item\">Intelligent Climate Control</li>\r\n      <li class=\"list-group-item\">Energy Efficiency</li>\r\n      <li class=\"list-group-item\">Remote Access</li>\r\n      <li class=\"list-group-item\">Compatibility</li>\r\n      <li class=\"list-group-item\">Smart Integrations</li>\r\n    </ul>\r\n\r\n<p class=\"lead my-5\">The Smart Thermostat Pro is an innovative home automation device that revolutionizes climate control. It offers advanced features and seamless integration, providing users with optimal comfort and energy efficiency.</p>', 'img/products/product-image.jpg', '2024-02-16 17:40:19', 'Smart Thermostat,home automation device,  2.1', 211),
 (2, 'Alarm System', 'HomeGuard Security System', 'Support 99 Wireless, Wireless sensor and 10 Remote, \r\nSupport Universal Different Types of sensors. \r\n\r\nFeatures of Model ST-99PZ Security Alarm Systems 1. Support 99 Wireless and 2 Wired sensor and 10 Remote. 2. 6 Number Call and Sms. 3. Support Different Types of sensor . 4. Long Wireless Range up to 100 M. 5. Voice Recording. 6. Power full Gsm Antina. 7. Support Many Zone. 8. Password Protect. 9. Control By Mobile And Remote. 10.Zone Name Can Be Revised. 11.Loud Siren. 12. Gsm+ Pstn 13.Alarm Ringing Time Adjust. 14.Keypad Lock Function. 15.Siren On/off Function. 16.Doorbell option available. 17.Backup Battery If Power Failure. 18.Emergency , intelligent, Many Defense, Delay Defense, Repeat Triggered zone Available. 19. Particular Sensor Delete and Add. 20.Wireless system, Need No Wiring. 21.On site Monitoring Function. 22. Command Base System. 23. Easy To Install.', 'img/products/product-image2.jpg', '2024-02-18 17:45:29', 'Home Guard Alert, Wireless Smart Security', 1200),
 (3, 'Automation Device', 'IntelliLight Smart Bulb', '<ul class=\"a-unordered-list a-vertical a-spacing-mini\">  <li class=\"a-spacing-mini\"><span class=\"a-list-item\"> RGB 16 Million colors - Now choose from a wide range of colors to suit your mood. Get relaxed with blue light after a long tiring day or turn it to red to enjoy the party evening or switch to yellow to enjoy dinner  </span></li>  <li class=\"a-spacing-mini\"><span class=\"a-list-item\"> Dim & Brighten - Adjust the brightness of your space ranging from 10% to 100% based on your need  </span></li>  <li class=\"a-spacing-mini\"><span class=\"a-list-item\"> Warm to cold light - Tune your light to any shade of White between Warm White (2700K) and Cool Day White (6500K) with Qubo App  </span></li>  <li class=\"a-spacing-mini\"><span class=\"a-list-item\"> 19 pre-set scenes for different moods - Select the scenes based on your mood. Scenes help to recreate the mood with automatic changing of colors. Maximum no. of moods in this segment of products  </span></li>  <li class=\"a-spacing-mini\"><span class=\"a-list-item\"> Scheduler & Timer - Use the app to create customized schedules to automate your daily activities. Like schedule to switch on the porch light to turn on at 6pm every morning and switch off at 6am  </span></li>  <li class=\"a-spacing-mini\"><span class=\"a-list-item\"> Energy efficient - The bulb can be put on a timer to turn off, reducing energy consumption  </span></li>  <li class=\"a-spacing-mini\"><span class=\"a-list-item\"> Voice Control compatibility - It works with Alexa and Google assistant devices. Simply make a voice command to control and adjust lighting without having to physically interact with the lights  </span></li>  </ul>', 'img/products/product-image3.jpg', '2024-02-18 17:45:35', 'Smart,Bulb', 30),
 (4, 'Home Automation', '6 Module Touch WiFi Panel', 'Nixon i-Touch - WiFi 6 Switch + Fan Reg + 2 USB Port + International Soc ket ( With Glass Plate ) Supply Voltage 160-240V, 6A Relay Output, Operating Load ( CFL & LED) 100W Max per switch, Radio Frequency 433.92MHz, Variable Capacitance based 5 Step Fan Regulator, USB Output 5V 2.1A DC. Socket 10A International Socket\r\nCan also be operated by Touch, RF Remote Control, iWorld Mobile Application (Download from App Store or Play Store) or through Voice Command via Google Home or Amazon Alexa\r\nDesigned with SMPS for improved reliability over current and over voltage protection, Provided with in-built surge protection upto 1.5KV, Relay based technology with obstruction free WiFi and RF control\r\nEquipped with indicator LED to indicate status of the switches and for convenience in the dark. Facilitates easy scene setting, scheduling and timer setting using iWorld App & Remote\r\nSimple Retrofit Installation, no special wiring needed, Standalone product can be fitted in 6M Junction Box directly', 'img/products/product-image4.jpg', '2024-02-19 18:10:48', 'Home Automation,6Module', 699),
