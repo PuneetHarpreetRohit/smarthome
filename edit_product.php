@@ -111,8 +111,7 @@ header('location:admin-login.php');
                 echo '<div class="alert alert-danger" role="alert">Product not found.</div>';
             }
             
-            // Close database connection
-            mysqli_close($conn);
+            
         } else {
             // Invalid product ID
             echo '<div class="alert alert-danger" role="alert">Invalid product ID.</div>';

@@ -92,8 +92,7 @@ header('location:admin-login.php');
         echo '<div class="alert alert-info" role="alert">No products found.</div>';
     }
 
-    // Close the database connection
-    mysqli_close($conn);
+    
     ?>
     <a href="admin-dashboard.php" class="btn btn-primary m-3">Back to Dashboard</a>
 </div>

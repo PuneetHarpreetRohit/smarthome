@@ -155,9 +155,14 @@
 
 
 
-/* Custom CSS for Cart Section */
+/*** checkout Custom CSS for Cart Section ***/
 
-
+.payment-form {
+    display: none;
+}
+.payment-error-message {
+    color: red;
+}
 
 
 .cart-section {

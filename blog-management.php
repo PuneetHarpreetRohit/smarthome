@@ -77,8 +77,7 @@ if(!isset($_SESSION['admin']))
             // No blog posts found
             echo '<div class="alert alert-info" role="alert">No blog posts found.</div>';
         }
-        // Close the database connection
-        mysqli_close($conn);
+
         ?>
         <a href="admin-dashboard.php" class="btn btn-primary m-3">Back to Dashboard</a>
     </div>

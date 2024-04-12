@@ -53,7 +53,7 @@ include_once 'dbcon.php'; // Include the database connection file
                         <h1><span>Your Address</span></h1>
                     </div>
                     <div class="default-form billing-info-form">
-                        <form action="comfirm-order.php" method="POST">
+                        <form id="checkout-form" action="comfirm-order.php" method="POST">
                             <div class="row">
                                 <div class="form-group col-md-12">
                                     <label class="form-label">Full Name*</label>
@@ -83,9 +83,44 @@ include_once 'dbcon.php'; // Include the database connection file
                                     <label class="form-label">State</label>
                                     <input type="text" name="state" class="form-control" placeholder="State">
                                 </div>
+                                
+                                <!-- Payment Mode -->
+                                <div class="form-group col-md-12">
+                                    <label class="form-label">Payment Mode</label><br>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" id="cash-on-delivery" name="payment_mode" value="Cash on Delivery">
+                                        <label class="form-check-label" for="cash-on-delivery">Cash on Delivery</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" id="pay-now" name="payment_mode" value="Paid">
+                                        <label class="form-check-label" for="pay-now">Pay Now</label>
+                                    </div>
+                                </div>
+                                <!-- Payment Mode -->
+
+                                <!-- Payment Card Details -->
+                                <div class="payment-details col-md-12" style="display: none;">
+                                    <div class="form-group">
+                                        <label class="form-label">Card Number*</label>
+                                        <input type="text" name="card_number" id="card-number" class="form-control" placeholder="1234567898765432">
+                                        <div class="invalid-feedback">Please enter a valid card number (16 Digits).</div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="form-label">Expiry Date*</label>
+                                        <input type="text" name="expiry_date" id="expiry-date" class="form-control" placeholder="MM/YY">
+                                        <div class="invalid-feedback">Please enter a valid expiry date (09/26).</div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="form-label">CVV*</label>
+                                        <input type="text" name="cvv" id="cvv" class="form-control" placeholder="CVV">
+                                        <div class="invalid-feedback">Please enter a valid CVV  (3 Digits).</div>
+                                    </div>
+                                </div>
+                                <!-- Payment Card Details -->
                             </div>
                             <div class="text-end">
-                                <button type="submit" name="submit" class="btn btn-primary">Place Order</button>
+                                <button type="button" id="pay-now-btn" class="btn btn-primary">Pay Now</button>
+                                <button type="submit" name="submit" id="place-order-btn" class="btn btn-success" style="display: none;">Place Order</button>
                             </div>
                         </form>
                     </div>
@@ -133,7 +168,7 @@ include_once 'dbcon.php'; // Include the database connection file
                                 <?php 
                                         } 
                                     }
-                                    mysqli_close($conn);
+                                    
                                 ?>
                             </tbody>
                         </table>
@@ -154,5 +189,84 @@ include_once 'dbcon.php'; // Include the database connection file
     <?php include_once('footer.php'); ?>
  
 
+    <!-- Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 
- 
+    <script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const paymentDetails = document.querySelector('.payment-details');
+        const payNowBtn = document.getElementById('pay-now-btn');
+        const placeOrderBtn = document.getElementById('place-order-btn');
+
+        // Function to show/hide payment fields and buttons based on radio button selection
+        function togglePaymentFields() {
+            if (document.getElementById('pay-now').checked) {
+                paymentDetails.style.display = 'block';
+                payNowBtn.style.display = 'block';
+                placeOrderBtn.style.display = 'none'; // Hide "Place Order" button for Pay Now option
+            } else {
+                paymentDetails.style.display = 'none';
+                payNowBtn.style.display = 'none';
+                placeOrderBtn.style.display = 'block'; // Show "Place Order" button for Cash on Delivery option
+            }
+        }
+
+        // Initial toggle based on radio button state
+        togglePaymentFields();
+
+        // Event listener for radio button change
+        document.querySelectorAll('input[name="payment_mode"]').forEach(function(el) {
+            el.addEventListener('change', togglePaymentFields);
+        });
+
+        // Form submission handler for pay now button
+        payNowBtn.addEventListener('click', function () {
+            // Add form validation here
+            if (validatePaymentForm()) {
+                // Simulate payment success
+                alert('Payment successful!');
+                // Show place order button after successful payment
+                placeOrderBtn.style.display = 'block';
+            } else {
+                alert('Please fill all payment details correctly.');
+            }
+        });
+
+        // Function to validate payment form
+        function validatePaymentForm() {
+            const cardNumber = document.getElementById('card-number').value;
+            const expiryDate = document.getElementById('expiry-date').value;
+            const cvv = document.getElementById('cvv').value;
+
+            // Card Number Validation
+            if (!/^\d{16}$/.test(cardNumber)) {
+                document.getElementById('card-number').classList.add('is-invalid');
+                return false;
+            } else {
+                document.getElementById('card-number').classList.remove('is-invalid');
+            }
+
+            // Expiry Date Validation
+            if (!/^\d{2}\/\d{2}$/.test(expiryDate)) {
+                document.getElementById('expiry-date').classList.add('is-invalid');
+                return false;
+            } else {
+                document.getElementById('expiry-date').classList.remove('is-invalid');
+            }
+
+            // CVV Validation
+            if (!/^\d{3}$/.test(cvv)) {
+                document.getElementById('cvv').classList.add('is-invalid');
+                return false;
+            } else {
+                document.getElementById('cvv').classList.remove('is-invalid');
+            }
+
+            return true;
+        }
+    });
+</script>
+
+</body>
+
+</html>

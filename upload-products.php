@@ -88,7 +88,7 @@ include_once('dbcon.php');
                 <label for="image" class="form-label">Image:</label>
                 <input type="file" class="form-control" id="image" name="image" required>
             </div>
-            <button type="submit" class="btn btn-primary">Upload Product</button>
+            <button type="submit" class="btn btn-primary mb-2">Upload Product</button>
         </form>
     </div>
 

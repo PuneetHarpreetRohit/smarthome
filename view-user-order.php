@@ -76,6 +76,7 @@ if (isset($_GET['order_id'])) {
                             <p><strong>State:</strong> <?php echo $order_row['state']; ?></p>
                             <p><strong>City:</strong> <?php echo $order_row['city']; ?></p>
                             <p><strong>Order Date:</strong> <?php echo $order_row['orderdate']; ?></p>
+                            <p><strong>Payment:</strong> <?php echo $order_row['payment_mode']; ?></p>
                             <p><strong>Status:</strong> <?php echo $order_row['status']; ?></p>
                             <!-- Display more order details as needed -->
                         </div>

@@ -116,6 +116,7 @@ include 'dbcon.php';
                         <th>Order ID</th>
                         <th>Detail</th>
                         <th>Status</th>
+                        <th>Payment</th>
                         <th>Total Products</th>
                     </tr>
                 </thead>
@@ -150,6 +151,7 @@ include 'dbcon.php';
                             echo "</ul>";
                             echo "</div>";
                             echo "</td>";
+                            echo "<td>" . $row['payment_mode'] . "</td>";
                             echo "<td>" . $row['total_products'] . "</td>";
                             echo "</tr>";
                         }
@@ -195,9 +197,9 @@ include 'dbcon.php';
         function downloadExcel() {
             var orderData = <?php echo $orderDataJson; ?>; // Get order data from PHP
 
-            var excelData = "ID\tFull Name\tEmail\tUser ID\tContact\tCity\tOrder Date\tOrder ID\tStatus\tTotal Products\n";
+            var excelData = "ID\tFull Name\tEmail\tUser ID\tContact\tCity\tOrder Date\tOrder ID\tStatus\tPayment\tTotal Products\n";
             orderData.forEach(function(row) {
-                excelData += row.id + "\t" + row.fname + "\t" + row.email + "\t" + row.user_id + "\t" + row.contact1 + "\t" + row.city + "\t" + row.orderdate + "\t" + row.orderid + "\t" + row.status + "\t" + row.total_products + "\n";
+                excelData += row.id + "\t" + row.fname + "\t" + row.email + "\t" + row.user_id + "\t" + row.contact1 + "\t" + row.city + "\t" + row.orderdate + "\t" + row.orderid + "\t" + row.status + "\t" + row.payment_mode + "\t" + row.total_products + "\n";
             });
 
             var blob = new Blob([excelData], { type: 'application/vnd.ms-excel' });
