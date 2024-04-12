@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Apr 02, 2024 at 09:15 PM
+-- Generation Time: Apr 12, 2024 at 06:00 AM
 -- Server version: 8.0.31
 -- PHP Version: 8.0.26
 
@@ -30,8 +30,8 @@ SET time_zone = "+00:00";
 DROP TABLE IF EXISTS `admin_login`;
 CREATE TABLE IF NOT EXISTS `admin_login` (
   `id` int NOT NULL AUTO_INCREMENT,
-  `email` varchar(200) COLLATE utf8mb4_general_ci NOT NULL,
-  `password` varchar(200) COLLATE utf8mb4_general_ci NOT NULL,
+  `email` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `password` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -51,8 +51,8 @@ INSERT INTO `admin_login` (`id`, `email`, `password`) VALUES
 DROP TABLE IF EXISTS `blog_posts`;
 CREATE TABLE IF NOT EXISTS `blog_posts` (
   `id` int UNSIGNED NOT NULL AUTO_INCREMENT,
-  `title` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
-  `content` text COLLATE utf8mb4_general_ci NOT NULL,
+  `title` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `content` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -78,8 +78,8 @@ INSERT INTO `blog_posts` (`id`, `title`, `content`, `created_at`) VALUES
 DROP TABLE IF EXISTS `cart`;
 CREATE TABLE IF NOT EXISTS `cart` (
   `id` int NOT NULL AUTO_INCREMENT,
-  `product_id` varchar(100) COLLATE utf8mb4_general_ci NOT NULL,
-  `user_id` varchar(100) COLLATE utf8mb4_general_ci NOT NULL,
+  `product_id` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `user_id` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   `quantity` int NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=61 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -92,9 +92,6 @@ INSERT INTO `cart` (`id`, `product_id`, `user_id`, `quantity`) VALUES
 (56, '15', '5', 1),
 (55, '2', '5', 1),
 (52, '5', '5', 3),
-(37, '5', '2', 3),
-(33, '8', '2', 2),
-(39, '2', '2', 1),
 (51, '4', '5', 1),
 (57, '8', '5', 1),
 (58, '9', '5', 1),
@@ -117,20 +114,20 @@ CREATE TABLE IF NOT EXISTS `order_details` (
   `address` varchar(500) NOT NULL,
   `state` varchar(30) NOT NULL,
   `city` varchar(30) NOT NULL,
-  `orderdate` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `orderdate` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
   `orderid` varchar(50) DEFAULT NULL,
   `status` varchar(20) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `id` (`id`),
   UNIQUE KEY `orderid` (`orderid`)
-) ENGINE=MyISAM AUTO_INCREMENT=15 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=16 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `order_details`
 --
 
 INSERT INTO `order_details` (`id`, `fname`, `email`, `user_id`, `contact1`, `contact2`, `address`, `state`, `city`, `orderdate`, `orderid`, `status`) VALUES
-(1, 'testingg', 'singh@gmail.com', '2', '0123456789', '', 'Village testingg', 'VAS', 'city', '2024-04-02 20:29:18', 'req-36127-65e89bd724862', 'confirmed'),
+(1, 'testingg', 'singh@gmail.com', '2', '0123456789', '', 'Village testingg', 'VAS', 'city', '2024-04-02 20:29:18', 'req-36127-65e89bd724862', 'pending'),
 (2, 'testingg', 'singh@gmail.com', '2', '0123456789', '', 'Village testingg', 'VAS', 'city', '2024-03-26 17:45:28', 'req-76019-65e89c5935af3', 'pending'),
 (3, 'Rohit', 'rohit@gmail.com', '2', '0123456874', '', '123 Main Street', 'Ontario', 'Toronto', '2024-03-06 16:54:58', 'req-34357-65e89fe2dd076', 'confirmed'),
 (4, 'Harpreet Singh', 'harpreetsg@gmail.com', '2', '1234567410', '', '123 Main Street', 'Ontario', 'Toronto', '2024-03-26 17:53:37', 'req-73802-65e8a12fb27a0', 'complete'),
@@ -140,9 +137,10 @@ INSERT INTO `order_details` (`id`, `fname`, `email`, `user_id`, `contact1`, `con
 (8, 'testingg', 'ssss@gmail.com', '2', '043434383', '', '', '', '', '2024-03-26 17:49:36', 'req-97863-65e8a4ed64d8b', 'complete'),
 (9, 'test', 'fdsfsd@ggg.com', '2', '3423432423', '', '', '', '', '2024-03-06 11:52:11', 'req-52592-65e8a643f3832', 'confirmed'),
 (10, 'testingg', 'ghuman@gmail.com', '2', '012321322', '', 'Village testingg', '', '', '2024-03-06 11:59:13', 'req-83893-65e8a7e9342cb', 'confirmed'),
-(11, 'sassa', 'ssaas@sss.com', '2', '2222222222', '', '', '', '', '2024-03-06 12:09:46', 'req-41222-65e8aa6239fb3', 'confirmed'),
-(12, 'Rohit', 'rohit@smart.com', '2', '1234567841', '', '', '', '', '2024-03-26 17:51:53', 'req-58126-65e8c30b598fe', 'confirmed'),
-(13, 'Singh', 'singh@smarthome.com', '5', '12345678911', '44445551261', '1690 Bergnaum Expressway,', 'PA 18140', 'New Carrollshir', '2024-04-02 20:32:44', 'req-48845-65e8c97cd1b94', 'confirmed');
+(11, 'sassa', 'ssaas@sss.com', '2', '2222222222', '', '', '', '', '2024-03-05 12:09:46', 'req-41222-65e8aa6239fb3', 'confirmed'),
+(12, 'Rohit', 'rohit@smart.com', '2', '1234567841', '', '', '', '', '2024-04-12 05:56:25', 'req-58126-65e8c30b598fe', 'pending'),
+(13, 'Singh', 'singh@smarthome.com', '5', '12345678911', '44445551261', '1690 Bergnaum Expressway,', 'PA 18140', 'New Carrollshir', '2024-04-12 05:56:12', 'req-48845-65e8c97cd1b94', 'complete'),
+(15, 'Rohit Kumar', 'rohit@smarthome.com', '2', '+1548541444', '', '299 The Queensway S, Keswick,', 'ON', 'Keswick', '2024-04-12 00:25:26', 'req-38450-6618ccceb422e', 'confirmed');
 
 -- --------------------------------------------------------
 
@@ -158,7 +156,7 @@ CREATE TABLE IF NOT EXISTS `order_items` (
   `quantity` int NOT NULL,
   `orderid` varchar(50) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=25 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=28 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `order_items`
@@ -188,7 +186,10 @@ INSERT INTO `order_items` (`id`, `user_id`, `product_id`, `quantity`, `orderid`)
 (21, '2', '8', 2, 'req-58126-65e8c30b598fe'),
 (22, '2', '15', 2, 'req-58126-65e8c30b598fe'),
 (23, '5', '15', 2, 'req-48845-65e8c97cd1b94'),
-(24, '1', '22', 3, 'req-90595-660c4f98e609a');
+(24, '1', '22', 3, 'req-90595-660c4f98e609a'),
+(25, '2', '5', 3, 'req-38450-6618ccceb422e'),
+(26, '2', '8', 2, 'req-38450-6618ccceb422e'),
+(27, '2', '2', 1, 'req-38450-6618ccceb422e');
 
 -- --------------------------------------------------------
 
@@ -234,11 +235,11 @@ INSERT INTO `products` (`product_id`, `category`, `title`, `description`, `image
 DROP TABLE IF EXISTS `users`;
 CREATE TABLE IF NOT EXISTS `users` (
   `id` int NOT NULL AUTO_INCREMENT,
-  `first_name` varchar(50) COLLATE utf8mb4_general_ci NOT NULL,
-  `last_name` varchar(50) COLLATE utf8mb4_general_ci NOT NULL,
-  `email` varchar(100) COLLATE utf8mb4_general_ci NOT NULL,
-  `phone_number` varchar(15) COLLATE utf8mb4_general_ci NOT NULL,
-  `password` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
+  `first_name` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `last_name` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `email` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `phone_number` varchar(15) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `password` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `email` (`email`)
 ) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
