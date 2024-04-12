@@ -80,8 +80,8 @@ if(isset($_GET['category'])) {
                     $image =  $img;
             ?>
                     <!-- Product Card -->
-                    <div class="col-md-4 mb-4">
-                        <div class="card">
+                    <div class="col-md-3 mb-4">
+                        <div class="card shadow">
                             <img src="<?php echo $image; ?>" class="card-img-top" alt="<?php echo $title; ?>">
                             <div class="card-body">
                                 <h5 class="card-title"><?php echo $title; ?></h5>

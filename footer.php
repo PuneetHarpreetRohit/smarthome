@@ -11,19 +11,46 @@
            
                 <div class="col-md-6 col-lg-3 wow fadeIn" data-wow-delay="0.5s">
                     <h5 class="text-white mb-4">Popular Link</h5>
-                    <a class="btn btn-link" href="">About Us</a>
-                    <a class="btn btn-link" href="">Contact Us</a>
-                    <a class="btn btn-link" href="">Privacy Policy</a>
-                    <a class="btn btn-link" href="">Terms & Condition</a>
-                    <a class="btn btn-link" href="">Home</a>
+                    <a class="btn btn-link" href="about-us.php">About Us</a>
+                    <a class="btn btn-link" href="contact-us.php">Contact Us</a>
+                    <a class="btn btn-link" href="blogs.php">Blogs</a>
+                    <a class="btn btn-link" href="cart.php">Cart</a>
+                    <a class="btn btn-link" href="index.php">Home</a>
                 </div>
                 <div class="col-md-6 col-lg-3 wow fadeIn" data-wow-delay="0.7s">
                     <h5 class="text-white mb-4">Our Products</h5>
                     <a href="products.php" class="btn btn-link">All Products</a>
-                        <a href="office-desk.php" class="btn btn-link">Office Desk</a>
-                        <a href="home-automation.php" class="btn btn-link">Home Automation</a>
-                        <a href="alarm-system.php" class="btn btn-link">Alarm System</a>
-                        <a href="automation-device.php" class="btn btn-link">Automation Device</a>
+                    
+                        <?php
+
+include_once('dbcon.php'); 
+// Fetch unique categories from the products table
+$category_query = "SELECT DISTINCT category FROM products LIMIT 4 ";
+$category_result = mysqli_query($conn, $category_query);
+
+// Initialize an array to store category counts
+$category_counts = array();
+
+// Loop through each category to count the number of products
+while ($row = mysqli_fetch_assoc($category_result)) {
+    $category = $row['category'];
+    $count_query = "SELECT COUNT(*) AS count FROM products WHERE category = '$category'";
+    $count_result = mysqli_query($conn, $count_query);
+    $count_row = mysqli_fetch_assoc($count_result);
+    $category_counts[$category] = $count_row['count'];
+}
+
+// Display the categories with the counts
+
+foreach ($category_counts as $category => $count) {
+    // Create a link to a category listing page, adjust the href as needed
+    $category_slug = strtolower(str_replace(' ', '-', $category));
+    echo " <a class='btn btn-link' href='category.php?category=$category_slug'>$category ($count) </a></li>";
+}
+
+
+ 
+?>
                 </div>
 				
 				     <div class="col-md-6 col-lg-3 wow fadeIn" data-wow-delay="0.3s">

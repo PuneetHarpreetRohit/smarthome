@@ -52,7 +52,7 @@ session_start(); ?>
                     ?>
                     <div class="col-md-4 mb-4">
                         <div class="card">
-                            <div class="card-body">
+                            <div class="card-body shadow">
                                 <h5 class="card-title"><?php echo $row['title']; ?></h5>
                                 <p class="card-text"><?php echo substr($row['content'], 0, 100); ?>...</p>
                                 <a href="post-detail.php?id=<?php echo $row['id']; ?>" class="btn btn-primary">Read More</a>

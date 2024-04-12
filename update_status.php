@@ -15,7 +15,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $orderId = $_POST['orderId'];
         $newStatus = $_POST['newStatus'];
 
-        // Update the status in the database
+        // Update the status in the database, excluding orderdate field
         $update_query = "UPDATE order_details SET status = ? WHERE id = ?";
         $stmt = $conn->prepare($update_query);
         $stmt->bind_param("si", $newStatus, $orderId);
@@ -35,5 +35,4 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Invalid request method
     echo json_encode(array("status" => "error", "message" => "Invalid request method"));
 }
-
 ?>

@@ -31,6 +31,73 @@
     font-size: 18px;
 }
 
+/*** Blog ***/
+.blog-item {
+    position: relative;
+    padding: 45px 30px;
+    height: 200px;
+    background: #FFFFFF;
+    transition: .5s;
+}
+
+.blog-item:hover {
+    background: var(--primary);
+}
+
+.blog-item .blog-icon {
+    margin: 0 auto 20px auto;
+    width: 90px;
+    height: 90px;
+    color: var(--primary);
+    background: var(--light);
+    transition: .5s;
+}
+
+.blog-item:hover .blog-icon {
+    background: #FFFFFF;
+}
+
+.blog-item h5,
+.blog-item p {
+    transition: .5s;
+}
+
+.blog-item:hover h5,
+.blog-item:hover p {
+    color: #FFFFFF;
+}
+
+.blog-item a.btn {
+    position: relative;
+    display: flex;
+    color: var(--primary);
+    transition: .5s;
+    z-index: 1;
+}
+
+.blog-item:hover a.btn {
+    color: var(--primary);
+}
+
+.blog-item a.btn::before {
+    position: absolute;
+    content: "";
+    width: 96px;
+    height: 35px;
+    top: 0;
+    left: 0;
+    border-radius: 35px;
+    background: var(--light);
+    transition: .5s;
+    z-index: -1;
+}
+
+.blog-item:hover a.btn::before {
+    width: 100%;
+    background: var(--light);
+}
+
+
 /*** Products ***/
 
 

@@ -6,7 +6,7 @@ require 'check_if_added.php';
  
  
 ?>
-?>
+
     <!DOCTYPE html>
 <html lang="en">
 
@@ -28,8 +28,8 @@ require 'check_if_added.php';
                     <div class="btn btn-sm border rounded-pill text-white px-3 mb-3 animated slideInRight">Smart Home Devices</div>
                     <h1 class="display-4 text-white mb-4 animated slideInRight">Welcome to the Future of Smart Living!</h1>
                     <p class="text-white mb-4 animated slideInRight">Transform your home with cutting-edge automation. Explore our range of smart devices designed for comfort, security, and energy efficiency.</p>
-                    <a href="#" class="btn btn-light py-sm-3 px-sm-5 rounded-pill me-3 animated slideInRight">Read More</a>
-                    <a href="#" class="btn btn-outline-light py-sm-3 px-sm-5 rounded-pill animated slideInRight">Contact Us</a>
+                    <a href="about-us.php" class="btn btn-light py-sm-3 px-sm-5 rounded-pill me-3 animated slideInRight">Read More</a>
+                    <a href="contact-us.php" class="btn btn-outline-light py-sm-3 px-sm-5 rounded-pill animated slideInRight">Contact Us</a>
                 </div>
                 <div class="col-lg-6 align-self-end text-center text-lg-end">
                     <img class="img-fluid" src="img/home-banner.png" alt="">
@@ -68,7 +68,7 @@ require 'check_if_added.php';
                         </div>
                     </div>
                     <div class="d-flex align-items-center mt-4">
-                        <a class="btn btn-primary rounded-pill px-4 me-3" href="">Read More</a>
+                        <a class="btn btn-primary rounded-pill px-4 me-3" href="blogs.php">Read More</a>
                     </div>
                 </div>
             </div>
@@ -76,40 +76,41 @@ require 'check_if_added.php';
     </div>
     <!-- About us Section End -->
  
-  <!-- About us Section Start -->
-  <div class="container-fluid py-5">
-        <div class="container">
+    <div class="container-fluid py-5">
+    <div class="container">
         <h2 class="mb-4">Our Blogs</h2>
-<?php
-// Fetch all blog posts from the database
-$sql = "SELECT * FROM blog_posts LIMIT 4";
-$result = mysqli_query($conn, $sql);
+        <div class="row">
+            <?php
+            // Fetch all blog posts from the database
+            $sql = "SELECT * FROM blog_posts LIMIT 4";
+            $result = mysqli_query($conn, $sql);
 
-// Check if there are blog posts
-if(mysqli_num_rows($result) > 0) {
-    echo '<div class="row">';
-    // Display blog posts
-    while($row = mysqli_fetch_assoc($result)) {
-        echo '<div class="col-md-3 mb-4">';
-        echo '<div class="card h-100 border rounded shadow-sm">';
-        echo '<div class="card-body">';
-        echo '<h5 class="card-title">' . $row['title'] . '</h5>';
-        echo '<p class="card-text">' . $row['created_at'] . '</p>';
-        echo '<a href="post-detail.php?id=' . $row['id'] . '" class="btn btn-primary">View Detail</a>';
-        echo '</div>';
-        echo '</div>';
-        echo '</div>';
-    }
-    echo '</div>';
-} else {
-    // No blog posts found
-    echo '<div class="alert alert-info" role="alert">No blog posts found.</div>';
-}
-
- 
-?>
-</div>
+            // Check if there are blog posts
+            if (mysqli_num_rows($result) > 0) {
+                // Display blog posts
+                while ($row = mysqli_fetch_assoc($result)) {
+                    echo '<div class="col-md-3 mb-4">';
+                    echo '<div class="blog-item d-flex flex-column justify-content-center text-center shadow p-3 mb-5  rounded border">';
+                 //   echo '<div class="blog-icon btn-square">';
+                   // echo '<i class="fa fa-rss fa-2x"></i>';
+                   // echo '</div>';
+                    echo '<h5 class="mb-3">' . $row['title'] . '</h5>';
+                    echo '<p>' . $row['created_at'] . '</p>';
+                    echo '<a class="btn btn-primary rounded-pill  mt-auto mx-auto" href="post-detail.php?id=' . $row['id'] . '">Read More</a>';
+                    echo '</div>';
+                    echo '</div>';
+                }
+            } else {
+                // No blog posts found
+                echo '<div class="col-12">';
+                echo '<div class="alert alert-info" role="alert">No blog posts found.</div>';
+                echo '</div>';
+            }
+            ?>
         </div>
+    </div>
+</div>
+
 
 
 
@@ -131,7 +132,7 @@ if(mysqli_num_rows($result) > 0) {
                 $image = $pic;
             ?>
                 <div class="col">
-                    <div class="card mb-4 product-card">
+                    <div class="card mb-4 shadow product-card">
                         <img src="<?php echo $image; ?>" class="card-img-top" alt="<?php echo $title; ?>">
                         <div class="card-body">
                             <h5 class="card-title"><?php echo $title; ?></h5>
